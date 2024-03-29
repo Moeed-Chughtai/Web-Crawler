@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Search Results</h1>
+    <ul>
+        {% for page in rankedPages %}
+            <li><a href="{{ url_for('page_content', page_name=page[0].name) }}">{{ page[0].name.split('.')[0] }}</a> - PageRank: {{ page[0].pageRank }} - Occurrences: {{ page[0].occurrence }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

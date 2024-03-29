@@ -1,0 +1,36 @@
+<p>In the C programming language, <code><b>restrict</b></code> is a keyword that can be used in pointer declarations. By adding this type qualifier, a programmer hints to the compiler that for the lifetime of the pointer, no other pointer will be used to access the object to which it points. This allows the compiler to make optimizations (for example, vectorization) that would not otherwise have been possible.
+</p><p><code>restrict</code> limits the effects of pointer aliasing, aiding optimizations. If the declaration of intent is not followed and the object is accessed by an independent pointer, this will result in undefined behavior. The use of this type qualifier allows C code to achieve the same performance as the same program written in Fortran. It was introduced in the C99 standard.</p><p>C++ does not have standard support for <code>restrict</code>, but many compilers have equivalents that usually work in both C++ and C, such as the GCC's and Clang's <code>__restrict__</code>, and Visual C++'s <code>__declspec(restrict)</code>. In addition, <code>__restrict</code> is supported by those three compilers. The exact interpretation of these alternative keywords vary by the compiler:
+</p>
+<ul><li>In Unix-style compilers such as GCC and Clang, <code class="mw-highlight mw-highlight-lang-text mw-content-ltr" id="" style="" dir="ltr">__restrict</code> and <code class="mw-highlight mw-highlight-lang-text mw-content-ltr" id="" style="" dir="ltr">__restrict__</code> mean exactly the same as their C counterpart. Extensions include allowing them to be applied to reference types and <code class="mw-highlight mw-highlight-lang-text mw-content-ltr" id="" style="" dir="ltr">this</code>.</li>
+<li>In Visual C++, multiple no-alias qualifiers are provided:
+<ol><li><code class="mw-highlight mw-highlight-lang-text mw-content-ltr" id="" style="" dir="ltr">__declspec(restrict)</code> applies to the function declaration and hints that the <i>returned</i> pointer is not aliased.</li>
+<li><code class="mw-highlight mw-highlight-lang-text mw-content-ltr" id="" style="" dir="ltr">__restrict</code> is used in the same place as <code class="mw-highlight mw-highlight-lang-text mw-content-ltr" id="" style="" dir="ltr">restrict</code>, but the no-alias hint does not propagate as in <code class="mw-highlight mw-highlight-lang-text mw-content-ltr" id="" style="" dir="ltr">restrict</code>. It is also extended for union types.</li></ol></li></ul>
+
+<h2>Optimization</h2>
+<p>If the compiler knows that there is only one pointer to a memory block, it can produce better optimized code. For instance:
+</p>
+
+<p>In the above code, the pointers <code>ptrA</code>, <code>ptrB</code>, and <code>val</code> <i>might</i> refer to the same memory location, so the compiler may generate less optimal code:
+</p>
+
+<p>However, if the <code>restrict</code> keyword is used and the above function is declared as
+</p>
+
+<p>then the compiler is allowed to <i>assume</i> that <code>ptrA</code>, <code>ptrB</code>, and <code>val</code> point to different locations and updating the memory location referenced by one pointer will not affect the memory locations referenced by the other pointers. The programmer, not the compiler, is responsible for ensuring that the pointers do not point to identical locations.  The compiler can e.g. rearrange the code, first loading all memory locations, then performing the operations before committing the results back to memory.
+</p>
+
+<p>The above assembly code is shorter because <code>val</code> is loaded only once.  Also, since the compiler can rearrange the code more freely, the compiler can generate code that executes faster.  In the second version of the above example, the <code>store</code> operations are all taking place after the <code>load</code> operations, ensuring that the processor won't have to block in the middle of the code to wait until the <code>store</code> operations are complete.
+</p><p>Note that the real generated code may have different behaviors. Benefit with the above mini-example tends to be small, and in real-life cases large loops doing heavy memory access tends to be what is really helped by restrict.
+</p><p>As mentioned above, how incorrect code behaves is undefined, the compiler only ensures the generated code works properly if the code follows the declaration of intent.
+</p>
+
+<h2>Compiler warnings</h2>
+<p>To help prevent incorrect code, some compilers and other tools try to detect when overlapping arguments have been passed to functions with parameters marked <code class="mw-highlight mw-highlight-lang-text mw-content-ltr" id="" style="" dir="ltr">restrict</code>. The CERT C Coding Standard considers misuse of <code class="mw-highlight mw-highlight-lang-text mw-content-ltr" id="" style="" dir="ltr">restrict</code> and library functions marked with it (EXP43-C) a probable source of software bugs, although as of November 2019 no vulnerabilities are known to have been caused by this.</p>
+
+<h2>References</h2>
+<ul><li><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1067248974"><cite class="citation web cs1">"ISO/IEC 9899:TC2 Committee Draft" <span>(PDF)</span>. ISO. May 6, 2005. pp. 108–112<span>. Retrieved <span>2008-12-22</span></span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=unknown&amp;rft.btitle=ISO%2FIEC+9899%3ATC2+Committee+Draft&amp;rft.pages=108-112&amp;rft.pub=ISO&amp;rft.date=2005-05-06&amp;rft_id=http%3A%2F%2Fwww.open-std.org%2Fjtc1%2Fsc22%2Fwg14%2Fwww%2Fdocs%2Fn1124.pdf&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ARestrict"></span></li></ul>
+
+<h2>External links</h2>
+<ul><li>Demystifying The Restrict Keyword: explanation and examples of use</li>
+<li><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1067248974"><cite id="CITEREFWalls" class="citation web cs1">Walls, Douglas. "How to Use the restrict Qualifier in C". Oracle™<span>. Retrieved <span>2012-11-21</span></span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=unknown&amp;rft.btitle=How+to+Use+the+restrict+Qualifier+in+C&amp;rft.pub=Oracle%E2%84%A2&amp;rft.aulast=Walls&amp;rft.aufirst=Douglas&amp;rft_id=https%3A%2F%2Fwww.oracle.com%2Ftechnetwork%2Fserver-storage%2Fsolaris10%2Fcc-restrict-139391.html&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ARestrict"></span></li>
+<li>Restricted Pointers in C: the original rationale behind the definition</li></ul>

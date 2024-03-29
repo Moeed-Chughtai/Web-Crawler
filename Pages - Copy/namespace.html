@@ -1,0 +1,164 @@
+<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1033289096">
+
+<p>In computing, a <b>namespace</b> is a set of signs (<i>names</i>) that are used to identify and refer to objects of various kinds. A namespace ensures that all of a given set of objects have unique names so that they can be easily identified.
+</p><p>Namespaces are commonly structured as hierarchies to allow reuse of names in different contexts. As an analogy, consider a system of naming of people where each person has a given name, as well as a family name shared with their relatives. If the first names of family members are unique only within each family, then each person can be uniquely identified by the combination of first name and family name; there is only one Jane Doe, though there may be many Janes. Within the namespace of the Doe family, just "Jane" suffices to unambiguously designate this person, while within the "global" namespace of all people, the full name must be used.
+</p><p>Prominent examples for namespaces include file systems, which assign names to files.
+Some programming languages organize their variables and subroutines in namespaces.Computer networks and distributed systems assign names to resources, such as computers, printers, websites, and remote files. Operating systems can partition kernel resources by isolated namespaces to support virtualization containers.
+</p><p>Similarly, hierarchical file systems organize files in directories. Each directory is a separate namespace, so that the directories "letters" and "invoices" may both contain a file "to_jane".
+</p><p>In computer programming, namespaces are typically employed for the purpose of grouping symbols and identifiers around a particular functionality and to avoid name collisions between multiple identifiers that share the same name.
+</p><p>In networking, the Domain Name System organizes websites (and other resources) into hierarchical namespaces.
+</p>
+
+<h2>Name conflicts</h2>
+<p>Element names are defined by the developer. This often results in a conflict when trying to mix XML documents from different XML applications.
+</p><p>This XML carries HTML table information:
+</p>
+
+<p>This XML carries information about a table (i.e. a piece of furniture):
+</p>
+
+<p>If these XML fragments were added together, there would be a name conflict. Both contain a <code class="nowrap" style="">&lt;table&gt;...&lt;/table&gt;</code> element, but the elements have different content and meaning.
+</p><p>An XML parser will not know how to handle these differences.
+</p>
+
+<h3>Solution via prefix</h3>
+<p>Name conflicts in XML can easily be avoided using a name prefix.
+</p><p>The following XML distinguishes between information about the HTML table and furniture by prefixing "h" and "f" at the beginning of the elements.
+</p>
+
+<h2>Naming system</h2>
+<p>A name in a namespace consists of a namespace name and a local name. The namespace name is usually applied as a prefix to the local name.
+</p><p>In augmented Backus–Naur form:
+</p>
+<pre>name = &lt;namespace name&gt; separator &lt;local name&gt;
+</pre>
+<p>When local names are used by themselves, name resolution is used to decide which (if any) particular name is alluded to by some particular local name.
+</p>
+
+<h3>Examples</h3>
+<h3>Delegation</h3>
+<p>Delegation of responsibilities between parties is important in real-world applications, such as the structure of the World Wide Web. Namespaces allow delegation of identifier assignment to multiple name issuing organisations whilst retaining global uniqueness. A central Registration authority registers the assigned namespace names allocated. Each namespace name is allocated to an organisation which is subsequently responsible for the assignment of names in their allocated namespace. This organisation may be a name issuing organisation that assign the names themselves, or another Registration authority which further delegates parts of their namespace to different organisations.
+</p>
+
+<h3>Hierarchy<span id="hierarchical_namespace"></span></h3>
+<p>A naming scheme that allows subdelegation of namespaces to third parties is a <b>hierarchical namespace</b>.
+</p><p>A hierarchy is recursive if the syntax for the namespace names is the same for each subdelegation. An example of a recursive hierarchy is the Domain name system.
+</p><p>An example of a non-recursive hierarchy are Uniform Resource Name representing an Internet Assigned Numbers Authority (IANA) number.
+</p>
+
+<h3>Namespace versus scope</h3>
+<p>A namespace name may provide context (scope in computer science) to a name, and the terms are sometimes used interchangeably. However, the context of a name may also be provided by other factors, such as the location where it occurs or the syntax of the name.
+</p>
+
+<h2>In programming languages</h2>
+<p>For many programming languages, namespace is a context for their identifiers. In an operating system, an example of namespace is a directory. Each name in a directory uniquely identifies one file or subdirectory.</p><p>As a rule, names in a namespace cannot have more than one meaning;  that is, different meanings cannot share the same name in the same namespace. A namespace is also called a context, because the same name in different namespaces can have different meanings, each one appropriate for its namespace.
+</p><p>Following are other characteristics of namespaces:
+</p>
+<ul><li>Names in the namespace can represent objects as well as concepts, be the namespace a natural or ethnic language, a constructed language, the technical terminology of a profession, a dialect, a sociolect, or an artificial language (e.g., a programming language).</li>
+<li>In the Java programming language, identifiers that appear in namespaces have a short (local) name and a unique long "qualified" name for use outside the namespace.</li>
+<li>Some compilers (for languages such as C++) combine namespaces and names for internal use in the compiler in a process called <i>name mangling</i>.</li></ul><p>As well as its abstract language technical usage as described above, some languages have a specific keyword used for explicit namespace control, amongst other uses. Below is an example of a namespace in C++:
+</p>
+
+<h3>Computer-science considerations</h3>
+<p>A namespace in computer science (sometimes also called a <b>name scope</b>) is an abstract container or environment created to hold a logical grouping of unique identifiers or symbols (i.e. names). An identifier defined in a namespace is associated only with that namespace. The same identifier can be independently defined in multiple namespaces. That is, an identifier defined in one namespace may or may not have the same meaning as the same identifier defined in another namespace. Languages that support namespaces specify the rules that determine to which namespace an identifier (not its definition) belongs.</p><p>This concept can be illustrated with an analogy. Imagine that two companies, X and Y, each assign ID numbers to their employees. X should not have two employees with the same ID number, and likewise for Y; but it is not a problem for the same ID number to be used at both companies. For example, if Bill works for company X and Jane works for company Y, then it is not a problem for each of them to be employee #123. In this analogy, the ID number is the identifier, and the company serves as the namespace. It does not cause problems for the same identifier to identify a different person in each namespace.
+</p><p>In large computer programs or documents it is common to have hundreds or thousands of identifiers. Namespaces (or a similar technique, see Emulating namespaces) provide a mechanism for hiding local identifiers. They provide a means of grouping logically related identifiers into corresponding namespaces, thereby making the system more modular.
+</p><p>Data storage devices and many modern programming languages support namespaces. Storage devices use directories (or folders) as namespaces. This allows two files with the same name to be stored on the device so long as they are stored in different directories. In some programming languages (e.g. C++, Python), the identifiers naming namespaces are themselves associated with an enclosing namespace. Thus, in these languages namespaces can nest, forming a namespace tree. At the root of this tree is the unnamed <b>global namespace</b>.
+</p>
+
+<h4>Use in common languages</h4>
+<h5>C</h5>
+<p>It is possible to use anonymous structs as namespaces in C since C99.
+</p>
+
+<h5>C++</h5>
+<p>In C++, a namespace is defined with a namespace block.</p>
+
+<p>Within this block, identifiers can be used exactly as they are declared. Outside of this block, the namespace specifier must be prefixed. For example, outside of <code>namespace abc</code>, <code>bar</code> must be written <code>abc::bar</code> to be accessed. C++ includes another construct that makes this verbosity unnecessary. By adding the line
+</p>
+
+<p>to a piece of code, the prefix <code>abc::</code> is no longer needed.
+</p><p>Identifiers that are not explicitly declared within a namespace are considered to be in the global namespace.
+</p>
+
+<p>These identifiers can be used exactly as they are declared, or, since the global namespace is unnamed, the namespace specifier <code>::</code> can be prefixed. For example, <code>foo</code> can also be written <code>::foo</code>.
+</p><p>Namespace resolution in C++ is hierarchical. This means that within the hypothetical namespace <code>food::soup</code>, the identifier <code>chicken</code> refers to <code>food::soup::chicken</code>. If <code>food::soup::chicken</code> doesn't exist, it then refers to <code>food::chicken</code>. If neither <code>food::soup::chicken</code> nor <code>food::chicken</code> exist, <code>chicken</code> refers to <code>::chicken</code>, an identifier in the global namespace.
+</p><p>Namespaces in C++ are most often used to avoid naming collisions. Although namespaces are used extensively in recent C++ code, most older code does not use this facility because it did not exist in early versions of the language. For example, the entire C++ Standard Library is defined within <code>namespace std</code>, but before standardization many components were originally in the global namespace. A programmer can insert the <code>using</code> directive to bypass namespace resolution requirements and obtain backwards compatibility with older code that expects all identifiers to be in the global namespace. However the use of the <code>using</code> directive for reasons other than backwards compatibility (e.g., convenience) is considered to be against good code practices.
+</p>
+
+<h5>Java</h5>
+<p>In Java, the idea of a namespace is embodied in Java packages. All code belongs to a package, although that package need not be explicitly named. Code from other packages is accessed by prefixing the package name before the appropriate identifier, for example <code>class String</code> in <code>package java.lang</code> can be referred to as <code>java.lang.String</code> (this is known as the fully qualified class name). Like C++, Java offers a construct that makes it unnecessary to type the package name (<code>import</code>). However, certain features (such as reflection) require the programmer to use the fully qualified name.
+</p><p>Unlike C++, namespaces in Java are not hierarchical as far as the syntax of the language is concerned. However, packages are named in a hierarchical manner. For example, all packages beginning with <code>java</code> are a part of the Java platform—the package <code>java.lang</code> contains classes core to the language, and <code>java.lang.reflect</code> contains core classes specifically relating to reflection.
+</p><p>In Java (and Ada, C#, and others), namespaces/packages express semantic categories of code. For example, in C#, <code>namespace System</code> contains code provided by the system (the .NET Framework). How specific these categories are and how deep the hierarchies go differ from language to language.
+</p><p>Function and class scopes can be viewed as implicit namespaces that are inextricably linked with visibility, accessibility, and object lifetime.
+</p>
+
+<h5>C#</h5>
+<p>Namespaces are heavily used in C# language. All .NET Framework classes are organized in namespaces, to be used more clearly and to avoid chaos. Furthermore, custom namespaces are extensively used by programmers, both to organize their work and to avoid naming collisions.
+When referencing a class, one should specify either its fully qualified name, which means namespace followed by the class name,
+</p>
+
+<p>or add a <b>using</b> statement. This, eliminates the need to mention the complete name of all classes in that namespace.
+</p>
+
+<p>In the above examples, <b>System</b> is a namespace, and <b>Console</b> and <b>Convert</b> are classes defined within <b>System</b>.
+</p>
+
+<h5>Python</h5>
+<p>In Python, namespaces are defined by the individual modules, and since modules can be contained in hierarchical packages, then namespaces are hierarchical too.
+In general when a module is imported then the names defined in the module are defined via that module's namespace, and are accessed in from the calling modules by using the fully qualified name.
+</p>
+
+<p>The <code>from ... import ...</code> statement can be used to insert the relevant names directly into the calling module's namespace, and those names can be accessed from the calling module without the qualified name:
+</p>
+
+<p>Since this directly imports names (without qualification) it can overwrite existing names with no warnings.
+</p><p>A special form of the statement is <code>from ... import *</code> which imports all names defined in the named package directly in the calling module's namespace. Use of this form of import, although supported within the language, is generally discouraged as it pollutes the namespace of the calling module and will cause already defined names to be overwritten in the case of name clashes.</p><p>Python also supports <code>import x as y</code> as a way of providing an alias or alternative name for use by the calling module:
+</p>
+
+<h5>XML namespace</h5>
+<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1033289096">
+<p>In XML, the XML namespace specification enables the names of elements and attributes in an XML document to be unique, similar to the role of namespaces in programming languages. Using XML namespaces, XML documents may contain element or attribute names from more than one XML vocabulary.
+</p>
+
+<h5>PHP</h5>
+<p>Namespaces were introduced into PHP from version 5.3 onwards. Naming collision of classes, functions and variables can be avoided.
+In PHP, a namespace is defined with a namespace block.
+</p>
+
+<p>We can reference a PHP namespace with the following different ways:
+</p>
+
+<h3>Emulating namespaces</h3>
+<p>In programming languages lacking language support for namespaces, namespaces can be emulated to some extent by using an identifier naming convention. For example, C libraries such as libpng often use a fixed prefix for all functions and variables that are part of their exposed interface. Libpng exposes identifiers such as:
+</p>
+<pre>png_create_write_struct
+png_get_signature
+png_read_row
+png_set_invalid
+</pre>
+<p>This naming convention provides reasonable assurance that the identifiers are unique and can therefore be used in larger programs without naming collisions. Likewise, many packages originally written in Fortran (e.g., BLAS, LAPACK) reserve the first few letters of a function's name to indicate which group it belongs to.
+</p><p>This technique has several drawbacks:
+</p>
+<ul><li>It doesn't scale well to nested namespaces; identifiers become excessively long since all uses of the identifiers must be fully namespace-qualified.</li>
+<li>Individuals or organizations may use inconsistent naming conventions, potentially introducing unwanted obfuscation.</li>
+<li>Compound or "query-based" operations on groups of identifiers, based on the namespaces in which they are declared, are rendered unwieldy or unfeasible.</li>
+<li>In languages with restricted identifier length, the use of prefixes limits the number of characters that can be used to identify what the function does. This is a particular problem for packages originally written in FORTRAN 77, which offered only 6 characters per identifier. For example, the name of the BLAS function <code>DGEMM</code> function indicates that it operates on double-precision numbers ("D") and general matrices ("GE"), and only the last two characters show what it actually does: matrix-matrix multiplication (the "MM").</li></ul><p>There are several advantages:
+</p>
+<ul><li>No special software tools are required to locate names in source-code files. A simple program like grep suffices.</li>
+<li>There are no namespace name conflicts.</li>
+<li>There is no need for name-mangling, and thus no potential incompatibility problems.</li></ul>
+
+<h2>See also</h2>
+<ul><li>11-digit delivery point ZIP code</li>
+<li>Binomial nomenclature (genus-species in biology)</li>
+<li>Chemical nomenclature</li>
+<li>Dewey Decimal Classification</li>
+<li>Digital object identifier</li>
+<li>Domain Name System</li>
+<li>Identity (object-oriented programming)</li>
+<li>Library of Congress Classification</li>
+<li>Star catalogues and astronomical naming conventions</li>
+<li>XML namespace</li>
+<li>Argument-dependent name lookup</li></ul>
+
+<h2>References</h2>

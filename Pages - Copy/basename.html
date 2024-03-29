@@ -1,0 +1,35 @@
+<p><b><kbd>basename</kbd></b> is a standard computer program on Unix and Unix-like operating systems. When <kbd>basename</kbd> is given a pathname, it will delete any prefix up to the last slash (<code>'/'</code>) character and return the result. <kbd>basename</kbd> is described in the Single UNIX Specification and is primarily used in shell scripts.
+</p>
+
+<h2>History</h2>
+<p><code class="mw-highlight mw-highlight-lang-text mw-content-ltr" id="" style="" dir="ltr">basename</code> was introduced in X/Open Portability Guidelines issue 2 of 1987. It was inherited into the first version of POSIX and the Single Unix Specification. It first appeared in 4.4BSD.</p><p>The version of <code>basename</code> bundled in GNU coreutils was written by David MacKenzie.</p><p>The command is available as a separate package for Microsoft Windows as part of the GnuWin32 project and the UnxUtils collection of native Win32 ports of common GNU Unix-like utilities.</p>
+
+<h2>Usage</h2>
+<p>The Single UNIX Specification specification for <kbd>basename</kbd> is.
+</p>
+<pre>basename string [suffix]
+</pre>
+<dl><dd><kbd>string</kbd>
+<dl><dd>A pathname</dd></dl></dd>
+<dd><kbd>suffix</kbd>
+<dl><dd>If specified, <kbd>basename</kbd> will also delete the suffix.</dd></dl></dd></dl>
+
+<h2>Examples</h2>
+<p>basename will retrieve the last name from a pathname ignoring any trailing slashes
+</p>
+
+<p>basename can also be used to remove the end of the base name, but not the complete base name
+</p>
+
+<h2>See also</h2>
+<ul><li>List of Unix commands</li>
+<li>dirname</li>
+<li>Path (computing)</li></ul>
+
+<h2>References</h2>
+<h2>External links</h2>
+<ul><li><span><code>basename</code></span>: return non-directory portion of a pathname – Commands &amp; Utilities Reference, The Single UNIX Specification, Issue 7 from The Open Group</li>
+<li><span><code>basename(1)</code></span> – Plan 9 Programmer's Manual, Volume 1</li>
+<li><span><code>basename(1)</code></span> – Inferno General commands Manual</li>
+<li><span><code>basename(1)</code></span> – Linux User Commands Manual</li>
+<li><span><code>basename(1)</code></span> – OpenBSD General Commands Manual</li></ul>

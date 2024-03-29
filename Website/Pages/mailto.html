@@ -1,0 +1,23 @@
+<p><b>mailto</b> is a Uniform Resource Identifier (URI) scheme for <a href='email.html'>email</a> addresses. It is used to produce hyperlinks on <a href='websites.html'>websites</a> that allow users to send an email to a specific address directly from an HTML document, without having to copy it and entering it into an email client. 
+</p><p>It was originally defined by Request for Comments (RFC) 1738 in December 1994, expanded by RFC 2368 in July 1998, and refined by RFC 6068 in October 2010.</p>
+
+<h2>Examples</h2>
+<p>"mailto" can be used within an HTML document to generate a link for sending email:
+</p>
+
+<p>Clicking on the hyperlink automatically opens the default email client, with the destination email address pre-filled.
+</p><p>It is possible to specify initial values for headers (e.g. subject, cc, etc.) and message body in the URL. Blanks, carriage returns, and linefeeds cannot be embedded but must be percent-encoded:</p>
+
+<p>Multiple addresses can be specified:</p>
+
+<p>The address can be omitted:
+</p>
+<p>It is worth noting that only the initial header must use have a question mark (?) prepended. All subsequent headers require an ampersand (&amp;). Should this not be the case, the scheme will not properly copy over the headers to the email client.</p>
+
+<h2>Security and privacy</h2>
+<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1033289096">
+<p>A number of security issues are mentioned in RFC 6068, one of them being robotic address harvesting. Mailto constructs are locatable within HTML pages by automated means which typically include the use of DOM constructs or regular expressions. Addresses harvested by such means are liable to be added to spammers' mass-mailing lists and thus to receive large amounts of unwanted mail.
+</p><p>While methods exist to "harden" mailto links against harvesting—address munging and JavaScript-based address obfuscation among them—these protections can be circumvented by sufficiently sophisticated harvesting robots.  Other techniques, like walling the address behind a CAPTCHA or similar "humanity check", provide security on par with that available for other contact methods, most notably web forms, which experience similar challenges with preventing spam.
+</p>
+
+<h2>References</h2>

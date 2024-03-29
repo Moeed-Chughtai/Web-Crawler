@@ -1,0 +1,95 @@
+<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1033289096">
+<p class="mw-empty-elt">
+</p>
+<p><b>RSS</b> (<b>RDF Site Summary</b> or <b>Really Simple Syndication</b>) is a web feed that allows users and applications to access updates to websites in a standardized, computer-readable format. Subscribing to RSS feeds can allow a user to keep track of many different websites in a single news aggregator, which constantly monitor sites for new content, removing the need for the user to manually check them. News aggregators (or "RSS readers") can be built into a browser, installed on a desktop computer, or installed on a mobile device.
+</p><p>Websites usually use RSS feeds to publish frequently updated information, such as blog entries, news headlines, episodes of audio and video series, or for distributing podcasts. An RSS document (called "feed", "web feed", or "channel") includes full or summarized text, and metadata, like publishing date and author's name. RSS formats are specified using a generic XML file.
+</p><p>Although RSS formats have evolved from as early as March 1999, it was between 2005 and 2006 when RSS gained widespread use, and the ("") icon was decided upon by several major web browsers. RSS feed data is presented to users using software called a news aggregator and the passing of content is called web syndication. Users subscribe to feeds either by entering a feed's URI into the reader or by clicking on the browser's feed icon. The RSS reader checks the user's feeds regularly for new information and can automatically download it, if that function is enabled.
+</p>
+
+<h2>History</h2>
+<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1033289096">
+<p>The RSS formats were preceded by several attempts at web syndication that did not achieve widespread popularity. The basic idea of restructuring information about websites goes back to as early as 1995, when Ramanathan V. Guha and others in Apple's Advanced Technology Group developed the Meta Content Framework.</p><p>RDF Site Summary, the first version of RSS, was created by Dan Libby and Ramanathan V. Guha at Netscape.  It was released in March 1999 for use on the My.Netscape.Com portal. This version became known as RSS 0.9. In July 1999, Dan Libby of Netscape produced a new version, RSS 0.91,
+which simplified the format by removing RDF elements and incorporating elements from Dave Winer's news syndication format.
+Libby also renamed the format from RDF to RSS <b>Rich Site Summary</b> and outlined further development of the format in a "futures document".</p><p>This would be Netscape's last participation in RSS development for eight years. As RSS was being embraced by web publishers who wanted their feeds to be used on My.Netscape.Com and other early RSS portals, Netscape dropped RSS support from My.Netscape.Com in April 2001 during new owner AOL's restructuring of the company, also removing documentation and tools that supported the format.</p><p>Two parties emerged to fill the void, with neither Netscape's help nor approval: The RSS-DEV Working Group and Dave Winer, whose UserLand Software had published some of the first publishing tools outside Netscape that could read and write RSS.
+</p><p>Winer published a modified version of the RSS 0.91 specification on the UserLand website, covering how it was being used in his company's products, and claimed copyright to the document. A few months later, UserLand filed a U.S. trademark registration for RSS, but failed to respond to a USPTO trademark examiner's request and the request was rejected in December 2001.</p><p>The RSS-DEV Working Group, a project whose members included Aaron Swartz, Guha and representatives of O'Reilly Media and Moreover, produced RSS 1.0 in December 2000. This new version, which reclaimed the name RDF Site Summary from RSS 0.9, reintroduced support for RDF and added XML namespaces support, adopting elements from standard metadata vocabularies such as Dublin Core.
+</p><p>In December 2000, Winer released RSS 0.92
+a minor set of changes aside from the introduction of the enclosure element, which permitted audio files to be carried in RSS feeds and helped spark podcasting. He also released drafts of RSS 0.93 and RSS 0.94 that were subsequently withdrawn.</p><p>In September 2002, Winer released a major new version of the format, RSS 2.0, that redubbed its initials Really Simple Syndication. RSS 2.0 removed the <i>type</i> attribute added in the RSS 0.94 draft and added support for namespaces. To preserve backward compatibility with RSS 0.92, namespace support applies only to other content included within an RSS 2.0 feed, not the RSS 2.0 elements themselves. (Although other standards such as Atom attempt to correct this limitation, RSS feeds are not aggregated with other content often enough to shift the popularity from RSS to other formats having full namespace support.)
+</p><p>Because neither Winer nor the RSS-DEV Working Group had Netscape's involvement, they could not make an official claim on the RSS name or format. This has fueled ongoing controversy in the syndication development community as to which entity was the proper publisher of RSS.
+</p><p>One product of that contentious debate was the creation of an alternative syndication format, Atom, that began in June 2003. The Atom syndication format, whose creation was in part motivated by a desire to get a clean start free of the issues surrounding RSS, has been adopted as IETF Proposed Standard RFC 4287.
+</p><p>In July 2003, Winer and UserLand Software assigned the copyright of the RSS 2.0 specification to Harvard's Berkman Klein Center for Internet &amp; Society, where he had just begun a term as a visiting fellow. At the same time, Winer launched the RSS Advisory Board with Brent Simmons and Jon Udell, a group whose purpose was to maintain and publish the specification and answer questions about the format.</p><p>In September 2004, Stephen Horlander created the now ubiquitous RSS icon () for use in the Mozilla Firefox browser.</p><p>In December 2005, the Microsoft Internet Explorer team and
+Microsoft Outlook team announced on their blogs that they were adopting Firefox's RSS icon. In February 2006, Opera Software followed suit. This effectively made the orange square with white radio waves the industry standard for RSS and Atom feeds, replacing the large variety of icons and text that had been used previously to identify syndication data.
+</p><p>In January 2006, Rogers Cadenhead relaunched the RSS Advisory Board without Dave Winer's participation, with a stated desire to continue the development of the RSS format and resolve ambiguities. In June 2007, the board revised their version of the specification to confirm that namespaces may extend core elements with namespace attributes, as Microsoft has done in Internet Explorer 7. According to their view, a difference of interpretation left publishers unsure of whether this was permitted or forbidden.
+</p>
+
+<h2>Example</h2>
+<p>RSS is XML-formatted plain text. The RSS format itself is relatively easy to read both by automated processes and by humans alike. An example feed could have contents such as the following:
+</p>
+
+<h3>Aggregators</h3>
+<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1033289096">
+
+<p>When retrieved, RSS reading software could use the XML structure to present a neat display to the end users. There are various news aggregator software for desktop and mobile devices, but RSS can also be built-in inside web browsers or email clients like Mozilla Thunderbird.
+</p>
+
+<h2>Variants</h2>
+<p>There are several different versions of RSS, falling into two major branches (RDF and 2.*).
+</p><p>The RDF (or RSS 1.*) branch includes the following versions:
+</p>
+<ul><li>RSS 0.90 was the original Netscape RSS version. This RSS was called <i>RDF Site Summary</i>, but was based on an early working draft of the RDF standard, and was not compatible with the final RDF Recommendation.</li>
+<li>RSS 1.0 is an open format by the RSS-DEV Working Group, again standing for <i>RDF Site Summary</i>. RSS 1.0 is an RDF format like RSS 0.90, but not fully compatible with it, since 1.0 is based on the final RDF 1.0 Recommendation.</li>
+<li>RSS 1.1 is also an open format and is intended to update and replace RSS 1.0. The specification is an independent draft not supported or endorsed in any way by the RSS-Dev Working Group or any other organization.</li></ul><p>The RSS 2.* branch (initially UserLand, now Harvard) includes the following versions:
+</p>
+<ul><li>RSS 0.91 is the simplified RSS version released by Netscape, and also the version number of the simplified version originally championed by Dave Winer from Userland Software. The Netscape version was now called <i>Rich Site Summary</i>; this was no longer an RDF format, but was relatively easy to use.</li>
+<li>RSS 0.92 through 0.94 are expansions of the RSS 0.91 format, which are mostly compatible with each other and with Winer's version of RSS 0.91, but are not compatible with RSS 0.90.</li>
+<li>RSS 2.0.1 has the internal version number 2.0. RSS 2.0.1 was proclaimed to be "frozen", but still updated shortly after release without changing the version number.  RSS now stood for <i>Really Simple Syndication</i>.  The major change in this version is an explicit extension mechanism using XML namespaces.</li></ul><p>Later versions in each branch are backward-compatible with earlier versions (aside from non-conformant RDF syntax in 0.90), and both versions include properly documented extension mechanisms using XML Namespaces, either directly (in the 2.* branch) or through RDF (in the 1.* branch).  Most syndication software supports both branches. "The Myth of RSS Compatibility", an article written in 2004 by RSS critic and Atom advocate Mark Pilgrim, discusses RSS version compatibility issues in more detail.
+</p><p>The extension mechanisms make it possible for each branch to copy innovations in the other. For example, the RSS 2.* branch was the first to support enclosures, making it the current leading choice for podcasting, and as of 2005 is the format supported for that use by iTunes and other podcasting software; however, an enclosure extension is now available for the RSS 1.* branch, mod_enclosure.  Likewise, the RSS 2.* core specification does not support providing full-text in addition to a synopsis, but the RSS 1.* markup can be (and often is) used as an extension.  There are also several common outside extension packages available, e.g. one  from Microsoft for use in Internet Explorer 7.
+</p><p>The most serious compatibility problem is with HTML markup. Userland's RSS reader—generally considered as the reference implementation—did not originally filter out HTML markup from feeds. As a result, publishers began placing HTML markup into the titles and descriptions of items in their RSS feeds. This behavior has become expected of readers, to the point of becoming a de facto standard. Though there is still some inconsistency in how software handles this markup, particularly in titles. The RSS 2.0 specification was later updated to include examples of entity-encoded HTML; however, all prior plain text usages remain valid.
+</p><p>As of January 2007, tracking data from www.syndic8.com indicates that the three main versions of RSS in current use are 0.91, 1.0, and 2.0, constituting 13%, 17%, and 67% of worldwide RSS usage, respectively. These figures, however, do not include usage of the rival web feed format Atom. As of August 2008, the syndic8.com website is indexing 546,069 total feeds, of which 86,496 (16%) were some dialect of Atom and 438,102 were some dialect of RSS.</p>
+
+<h2>Modules</h2>
+<p>The primary objective of all RSS modules is to extend the basic XML schema established for more robust syndication of content. This inherently allows for more diverse, yet standardized, transactions without modifying the core RSS specification.
+</p><p>To accomplish this extension, a tightly controlled vocabulary (in the RSS world, "module"; in the XML world, "schema") is declared through an XML namespace to give names to concepts and relationships between those concepts.
+</p><p>Some RSS 2.0 modules with established namespaces are:
+</p>
+<ul><li>Media RSS (MRSS) 2.0 Module</li>
+<li>OpenSearch RSS 2.0 Module</li></ul>
+
+<h2>Interoperability</h2>
+<p>Although the number of items in an RSS channel is theoretically unlimited, some news aggregators do not support RSS files larger than 150KB. For example, applications that rely on the Common Feed List of Windows might handle such files as if they were corrupt, and not open them. Interoperability can be maximized by keeping the file size under this limit.
+</p><p>Podcasts are distributed using RSS. To listen to a podcast, a user adds the RSS feed to their podcast client, and the client can then list available episodes and download or stream them for listening or viewing. To be included in a podcast directory the feed must for each episode provide a title, description, artwork, category, language, and explicit rating. There are some services that specifically indexes and is a search engine for podcasts.</p><p>Some BitTorrent clients support RSS. RSS feeds which provide links to .torrent files allow users to subscribe and automatically download content as soon as it is published.
+</p>
+
+<h3>RSS to email</h3>
+<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1033289096">
+<p>Some services deliver RSS to an email inbox, sending updates from user's personal selection and schedules. Examples of such services include IFTTT, Zapier and others. Conversely, some services deliver email to RSS readers. Further services like e. g. Gmane allow to subscribe to feeds via NNTP.
+</p><p>It may be noted that email clients such as Thunderbird supports RSS natively.</p>
+
+<h2>RSS compared with Atom</h2>
+<p>Both RSS and Atom are widely supported and are compatible with all major consumer feed readers. RSS gained wider use because of early feed reader support.
+Technically, Atom has several advantages: less restrictive licensing, IANA-registered MIME type, XML namespace, URI support, RELAX NG support.</p><p>The following table shows RSS elements alongside Atom elements where they are equivalent.
+</p><p>Note: the asterisk character (*) indicates that an element must be provided (Atom elements "author" and "link" are only required under certain conditions).
+</p>
+
+<h2>Current usage</h2>
+<p>Several major sites such as Facebook and Twitter previously offered RSS feeds but have reduced or removed support. Additionally, widely used readers such as Shiira, FeedDemon, and particularly Google Reader have been discontinued as of 2013 having cited declining popularity in RSS. RSS support was removed in OS X Mountain Lion's versions of Mail and Safari, although the features were partially restored in Safari 8. Mozilla removed RSS support from Mozilla Firefox version 64.0, joining Google Chrome and Microsoft Edge which do not include RSS support, thus leaving Internet Explorer as the last major browser to include RSS support by default. Google Podcasts has proven to be a popular podcast service using RSS.</p><p>Since the late 2010s there has been an uptick in RSS interest again. In 2018, <i>Wired</i> published an article named "It's Time for an RSS Revival", citing that RSS gives more control over content compared to algorithms and trackers from social media sites. At that time, Feedly was the most popular RSS reader.</p>
+
+<h2>See also</h2>
+<ul><li>JSON Feed</li>
+<li>Aaron Swartz</li>
+<li>Comparison of feed aggregators</li>
+<li>Data portability</li>
+<li>FeedSync previously Simple Sharing Extensions</li>
+<li>hAtom</li>
+<li>Mashup (web application hybrid)</li>
+<li>WebSub</li></ul>
+
+<h2>Notes</h2>
+<h2>References</h2>
+<h2>External links</h2>
+
+<ul><li>RSS 0.90 Specification</li>
+<li>RSS 0.91 Specification</li>
+<li>RSS 1.0 Specifications</li>
+<li>RSS 2.0 Specification</li>
+<li>History of the RSS Fork (Mark Pilgrim)</li>
+<li>Building an RSS feed Tutorial with example</li></ul><p><br></p>

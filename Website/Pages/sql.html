@@ -1,0 +1,157 @@
+<link rel="mw-deduplicated-inline-style" href="mw-<a href='data.html'>data</a>:TemplateStyles:r1033289096">
+
+<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1066479718"><p><b>SQL</b> (<span> <span>(<span><span><span></span>listen</span></span>)</span></span> <i>S-Q-L</i>, <span></span> "sequel"; <b>Structured Query Language</b>) is a domain-specific language used in programming and designed for managing data held in a relational database management system (RDBMS), or for stream processing in a relational data stream management system (RDSMS). It is particularly useful in handling structured data, i.e. data incorporating relations among entities and variables.
+SQL offers two main advantages over older read–write APIs such as ISAM or VSAM. Firstly, it introduced the concept of accessing many records with one single command. Secondly, it eliminates the need to specify <i>how</i> to reach a record, e.g. with or without an index.
+</p><p>Originally based upon relational algebra and tuple relational calculus, SQL consists of many types of statements, which may be informally classed as sublanguages, commonly: a data query language (DQL), a data definition language (DDL), a data control language (DCL), and a data manipulation language (DML). The scope of SQL includes data query, data manipulation (insert, update and delete), data definition (schema creation and modification), and data access control. Although SQL is essentially a declarative language (4GL), it also includes procedural elements.
+</p><p>SQL was one of the first commercial languages to use Edgar F. Codd’s relational model. The model was described in his influential 1970 paper, "A Relational Model of Data for Large Shared Data Banks".  Despite not entirely adhering to the relational model as described by Codd, it became the most widely used database language.</p><p>SQL became a standard of the American National Standards Institute (ANSI) in 1986 and of the International Organization for Standardization (ISO) in 1987. Since then, the standard has been revised to include a larger set of features. Despite the existence of standards, most SQL code requires at least some changes before being ported to different database systems.
+</p>
+
+<h2>History</h2>
+<p>SQL was initially developed at IBM by Donald D. Chamberlin and Raymond F. Boyce after learning about the relational model from Edgar F. Codd in the early 1970s. This version, initially called SEQUEL (Structured English Query Language), was designed to manipulate and retrieve data stored in IBM's original quasirelational database management system, System R, which a group at IBM San Jose Research Laboratory had developed during the 1970s.</p><p>Chamberlin and Boyce's first attempt at a relational database language was SQUARE (Specifying Queries in A Relational Environment), but it was difficult to use due to subscript/superscript notation. After moving to the San Jose Research Laboratory in 1973, they began work on a sequel to SQUARE. The name SEQUEL was later changed to SQL (dropping the vowels) because "SEQUEL" was a trademark of the UK-based Hawker Siddeley Dynamics Engineering Limited company.  The label SQL later became the acronym for Structured Query Language.
+</p><p>After testing SQL at customer test sites to determine the usefulness and practicality of the system, IBM began developing commercial products based on their System R prototype, including System/38, SQL/DS, and IBM Db2, which were commercially available in 1979, 1981, and 1983, respectively.</p><p>In the late 1970s, Relational Software, Inc. (now Oracle Corporation) saw the potential of the concepts described by Codd, Chamberlin, and Boyce, and developed their own SQL-based RDBMS with aspirations of selling it to the U.S. Navy, Central Intelligence Agency, and other U.S. government agencies. In June 1979, Relational Software introduced one of the first commercially available implementations of SQL, Oracle V2 (Version2) for VAX computers.
+</p><p>By 1986, ANSI and ISO standard groups officially adopted the standard "Database Language SQL" language definition. New versions of the standard were published in 1989, 1992, 1996, 1999, 2003, 2006, 2008, 2011, and most recently, 2016.</p>
+
+<h2>Syntax</h2>
+<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1033289096">
+
+<p>The SQL language is subdivided into several language elements, including:
+</p>
+<ul><li><i>Clauses</i>, which are constituent components of statements and queries. (In some cases, these are optional.)</li>
+<li><i>Expressions</i>, which can produce either scalar values, or tables consisting of columns and rows of data</li>
+<li><i>Predicates</i>, which specify conditions that can be evaluated to SQL three-valued logic (3VL) (true/false/unknown) or Boolean truth values and are used to limit the effects of statements and queries, or to change program flow.</li>
+<li><i>Queries</i>, which retrieve the data based on specific criteria. This is an important element of <i>SQL</i>.</li>
+<li><i>Statements</i>, which may have a persistent effect on schemata and data, or may control transactions, program flow, connections, sessions, or diagnostics.
+<ul><li>SQL statements also include the semicolon (";") statement terminator. Though not required on every platform, it is defined as a standard part of the SQL grammar.</li></ul></li>
+<li><i>Insignificant whitespace</i> is generally ignored in SQL statements and queries, making it easier to format SQL code for readability.</li></ul>
+
+<h2>Procedural extensions</h2>
+<p>SQL is designed for a specific purpose: to query data contained in a relational database. SQL is a set-based, declarative programming language, not an imperative programming language like C or BASIC. However, extensions to Standard SQL add procedural programming language functionality, such as control-of-flow constructs. These include:
+</p>
+<p>In addition to the standard SQL/PSM extensions and proprietary SQL extensions, procedural and object-oriented programmability is available on many SQL platforms via DBMS integration with other languages. The SQL standard defines SQL/JRT extensions (SQL Routines and Types for the Java Programming Language) to support Java code in SQL databases. Microsoft SQL Server 2005 uses the SQLCLR (SQL Server Common Language Runtime) to host managed .NET assemblies in the database, while prior versions of SQL Server were restricted to unmanaged extended stored procedures primarily written in C. PostgreSQL lets users write functions in a wide variety of languages—including Perl, Python, Tcl, JavaScript (PL/V8) and C.</p>
+
+<h2>Interoperability and standardization</h2>
+<h3>Overview</h3>
+<p>SQL implementations are incompatible between vendors and do not necessarily completely follow standards. In particular, date and time syntax, string concatenation, <code>NULL</code>s, and comparison case sensitivity vary from vendor to vendor. Particular exceptions are PostgreSQL and Mimer SQL which strive for standards compliance, though PostgreSQL does not adhere to the standard in all cases. For example, the folding of unquoted names to lower case in PostgreSQL is incompatible with the SQL standard, which says that unquoted names should be folded to upper case. Thus, <code>Foo</code> should be equivalent to <code>FOO</code> not <code>foo</code> according to the standard.
+</p><p>Popular implementations of SQL commonly omit support for basic features of Standard SQL, such as the <code>DATE</code> or <code>TIME</code> data types.  The most obvious such examples, and incidentally the most popular commercial and proprietary SQL DBMSs, are Oracle (whose <code>DATE</code> behaves as <code>DATETIME</code>, and lacks a <code>TIME</code> type) and MS SQL Server (before the 2008 version). As a result, SQL code can rarely be ported between database systems without modifications.
+</p>
+
+<h3>Reasons for incompatibility</h3>
+<p>Several reasons for this lack of portability between database systems include:
+</p>
+<ul><li>The complexity and size of the SQL standard means that most implementers do not support the entire standard.</li>
+<li>The standard does not specify database behavior in several important areas (e.g. indices, file storage...), leaving implementations to decide how to behave.</li>
+<li>The SQL standard precisely specifies the syntax that a conforming database system must implement. However, the standard's specification of the semantics of language constructs is less well-defined, leading to ambiguity.</li>
+<li>Many database vendors have large existing customer bases; where the newer version of the SQL standard conflicts with the prior behavior of the vendor's database, the vendor may be unwilling to break backward compatibility.</li>
+<li>Little commercial incentive exists for vendors to make changing database suppliers easier (see vendor lock-in).</li>
+<li>Users evaluating database software tend to place other factors such as performance higher in their priorities than standards conformance.</li></ul>
+
+<h3>Standardization history</h3>
+<p>SQL was adopted as a standard by the ANSI in 1986 as SQL-86 and the ISO in 1987. It is maintained by <i>ISO/IEC JTC 1, Information technology, Subcommittee SC 32, Data management and interchange</i>.
+</p><p>Until 1996, the National Institute of Standards and Technology (NIST) data-management standards program certified SQL DBMS compliance with the SQL standard. Vendors now self-certify the compliance of their products.</p><p>The original standard declared that the official pronunciation for "SQL" was an initialism: <span></span> ("ess cue el"). Regardless, many English-speaking database professionals (including Donald Chamberlin himself) use the acronym-like pronunciation of <span></span> ("sequel"), mirroring the language's prerelease development name, "SEQUEL".<br> The SQL standard has gone through a number of revisions:
+</p>
+
+<h3>Current standard</h3>
+<p>The standard is commonly denoted by the pattern: <i>ISO/IEC 9075-n:yyyy Part n: title</i>, or, as a shortcut, <i>ISO/IEC 9075</i>.
+</p><p><i>ISO/IEC 9075</i> is complemented by <i>ISO/IEC 13249: SQL Multimedia and Application Packages</i> (SQL/MM), which defines SQL-based interfaces and packages to widely spread applications such as video, audio, and spatial data.
+Interested parties may purchase SQL standards documents from ISO, IEC, or ANSI. A draft of SQL:2008 is freely available as a zip archive.</p>
+
+<h4>Anatomy of SQL Standard</h4>
+<p>The SQL standard is divided into 10 parts, but with gaps in the numbering due to the withdrawal of outdated parts.
+</p>
+
+<h4>Extensions to the ISO/IEC Standard</h4>
+<p>ISO/IEC 9075 is complemented by ISO/IEC 13249 <i>SQL Multimedia and Application Packages</i>. This closely related but separate standard is developed by the same committee. It defines interfaces and packages based on SQL. The aim is unified access to typical database applications like text, pictures, data mining, or spatial data.
+</p>
+
+<h4>Technical reports</h4>
+<p>ISO/IEC 9075 is also accompanied by a series of Technical Reports, published as ISO/IEC TR 19075. These Technical Reports explain the justification for and usage of some features of SQL, giving examples where appropriate. The Technical Reports are non-normative; if there is any discrepancy from 9075, the text in 9075 holds. Currently available 19075 Technical Reports are:
+</p>
+<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r998391716">
+
+<h2>Alternatives</h2>
+<p>A distinction should be made between alternatives to SQL as a language, and alternatives to the relational model itself.  Below are proposed relational alternatives to the SQL language.  See navigational database and NoSQL for alternatives to the relational model.
+</p>
+<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r998391716">
+
+<h2>Distributed SQL processing</h2>
+<p>Distributed Relational Database Architecture (DRDA) was designed by a workgroup within IBM from 1988 to 1994. DRDA enables network-connected relational databases to cooperate to fulfill SQL requests.</p><p>An interactive user or program can issue SQL statements to a local RDB and receive tables of data and status indicators in reply from remote RDBs. SQL statements can also be compiled and stored in remote RDBs as packages and then invoked by package name. This is important for the efficient operation of application programs that issue complex, high-frequency queries. It is especially important when the tables to be accessed are located in remote systems.
+</p><p>The messages, protocols, and structural components of DRDA are defined by the Distributed Data Management Architecture. Distributed SQL processing ala DRDA is distinctive from contemporary distributed SQL databases.
+</p>
+
+<h2>Criticisms</h2>
+<h3>Design</h3>
+<p>SQL deviates in several ways from its theoretical foundation, the relational model and its tuple calculus.  In that model, a table is a set of tuples, while in SQL, tables and query results are lists of rows; the same row may occur multiple times, and the order of rows can be employed in queries (e.g. in the LIMIT clause).
+Critics argue that SQL should be replaced with a language that returns strictly to the original foundation: for example, see <i>The Third Manifesto</i>. 
+</p>
+
+<h3>Orthogonality and completeness</h3>
+<p>Early specifications did not support major features, such as primary keys. Result sets could not be named, and subqueries had not been defined. These were added in 1992.</p><p>The lack of sum types has been described as a roadblock to full use of SQL's user-defined types. JSON support, for example, needs to be added by a new standard in 2016.</p>
+
+<h3>Null</h3>
+<p>The concept of Null is the subject of some debates. The Null marker indicates the absence of a value, and is distinct from a value of 0 for an integer column or an empty string for a text column. The concept of Nulls enforces the 3-valued-logic in SQL, which is a concrete implementation of the general 3-valued logic.</p>
+
+<h3>Duplicates</h3>
+<p>Another popular criticism is that it allows duplicate rows, making integration with languages such as Python, whose data types might make accurately representing the data difficult,  in terms of parsing and by the absence of modularity.</p><p>This is usually avoided by declaring a primary key, or a unique constraint, with one or more columns that uniquely identify a row in the table.
+</p>
+
+<h3>Impedance mismatch</h3>
+<p>In a similar sense to object–relational impedance mismatch,  a mismatch occurs between the declarative SQL language and the procedural languages in which SQL is typically embedded.
+</p>
+
+<h2>SQL data types</h2>
+<p>The SQL standard defines three kinds of data types:</p>
+<dl><dd><ul><li>predefined data types</li>
+<li>constructed types</li>
+<li>user-defined types.</li></ul></dd></dl><p><i>Constructed types</i> are one of ARRAY, MULTISET, REF(erence), or ROW. <i>User-defined types</i> are comparable to classes in object-oriented language with their own constructors, observers, mutators, methods, inheritance, overloading, overwriting, interfaces, and so on. <i>Predefined data types</i> are intrinsically supported by the implementation.
+</p>
+
+<h3>Predefined data types</h3>
+<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r998391716">
+
+<h2>See also</h2>
+<ul><li>Wikibook SQL</li>
+<li>Object database</li>
+<li>List of relational database management systems</li>
+<li>Comparison of relational database management systems</li>
+<li>Comparison of object–relational database management systems</li>
+<li>D (data language specification)</li>
+<li>Query by Example</li>
+<li>SQL syntax</li>
+<li>Oracle PL/SQL</li>
+<li>Microsoft Transact-SQL (T-SQL)</li>
+<li>Online transaction processing (OLTP)</li>
+<li>Online analytical processing (OLAP)</li>
+<li>Data warehouse</li>
+<li>Relational data stream management system</li>
+<li>NoSQL</li>
+<li>MUMPS</li>
+<li>Hierarchical database model</li>
+<li>Star schema</li>
+<li>Snowflake schema</li>
+<li>SQL compliance</li></ul>
+
+<h2>Notes</h2>
+<h2>References</h2>
+<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1011085734">
+
+<h2>Sources</h2>
+<h3>SQL standards documents</h3>
+<h4>ITTF publicly available standards and technical reports</h4>
+<p>The ISO/IEC Information Technology Task Force publishes publicly available standards including SQL. Technical Corrigenda (corrections) and Technical Reports (discussion documents) are published there.
+</p><p>SQL -- Part 1: Framework (SQL/Framework)
+</p>
+
+<h4>Draft documents</h4>
+<p>Formal SQL standards are available from ISO and ANSI for a fee. For informative use, as opposed to strict standards compliance, late drafts often suffice.
+</p>
+<ul><li>SQL:2011 draft</li>
+<li>SQL-92 draft</li></ul>
+
+<h2>External links</h2>
+
+<ul><li><i>1995 SQL Reunion: People, Projects, and Politics</i>, by Paul McJones (ed.): transcript of a reunion meeting devoted to the personal history of relational databases and SQL.</li>
+<li>American National Standards Institute. X3H2 Records, 1978–1995 Charles Babbage Institute Collection documents the H2 committee's development of the NDL and SQL standards.</li>
+<li>Oral history interview with Donald D. Chamberlin Charles Babbage Institute In this oral history Chamberlin recounts his early life, his education at Harvey Mudd College and Stanford University, and his work on relational database technology. Chamberlin was a member of the System R research team and, with Raymond F. Boyce, developed the SQL database language. Chamberlin also briefly discusses his more recent research on XML query languages.</li>
+<li>Comparison of Different SQL Implementations This comparison of various SQL implementations is intended to serve as a guide to those interested in porting SQL code between various RDBMS products, and includes comparisons between SQL:2008, PostgreSQL, Db2, MS SQL Server, MySQL, Oracle, and Informix.</li>
+<li>Event stream processing with SQL - An introduction to real-time processing of streaming data with continuous SQL queries</li>
+<li>BNF Grammar for ISO/IEC 9075:2003, part 2 SQL/Framework</li></ul>

@@ -1,0 +1,35 @@
+<p>In <a href='computing.html'>computing</a>, <b>file comparison</b> is the calculation and display of the <a href='diff.html'>diff</a>erences and similarities between data objects, typically text files such as source code.
+</p><p>The methods, implementations, and results are typically called a <b>diff</b>, after the Unix <code>diff</code> utility. The output may be presented in a graphical user interface or used as part of larger tasks in networks, file systems, or revision control.
+</p><p>Some widely used file comparison programs are diff, cmp, FileMerge, WinMerge, Beyond Compare, and File Compare.
+</p><p>Many text editors and word processors perform file comparison to highlight the changes to a document.
+</p>
+
+<h2>Method types</h2>
+<p>Most file comparison tools find the longest common subsequence between two files.  Any data not in the longest common subsequence is presented as an insertion or deletion.
+</p><p>In 1978, Paul Heckel published an algorithm that identifies most moved blocks of text. This is used in the IBM History Flow tool. Other file comparison programs find block moves.</p><p>Some specialized file comparison tools find the longest increasing subsequence between two files. The rsync protocol uses a rolling hash function to compare two files on two distant computers with low communication overhead.
+</p><p>File comparison in word processors is typically at the word level, while comparison in most programming tools is at the line level. Byte or character-level comparison is useful in some specialized applications.
+</p>
+
+<h2>Display</h2>
+<p>Display of file comparison varies, with the main approaches being either showing two files side-by-side, or showing a single file, with markup showing the changes from one file to the other. In either case, particularly side-by-side viewing, code folding or text folding may be used to hide unchanged portions of the file, only showing the changed portions.
+</p>
+
+<h2>Reasoning</h2>
+<p>Comparison tools are used for various reasons. When one wishes to compare binary files, byte-level is probably best. But if one wishes to compare text files or computer programs, a side-by-side visual comparison is usually best. This gives the user the chance to decide which file is the preferred one to retain, if the files should be merged to create one containing all of the differences, or perhaps to keep them both as-is for later reference, through some form of "versioning" control.
+</p><p>File comparison is an important, and most likely integral, part of file synchronization and backup. In backup methodologies, the issue of data corruption is an important one. Corruption occurs without warning and without one's knowledge; at least usually until too late to recover the missing parts.  Usually, the only way to know for sure if a file has become corrupted is when it is next used or opened. Barring that, one must use a comparison tool to at least recognize that a difference has occurred. Therefore, all file sync or backup programs must include file comparison if these programs are to be actually useful and trusted.
+</p>
+
+<h2>Historical uses</h2>
+<p>Prior to file comparison, machines existed to compare magnetic tapes or punch cards.  The IBM 519 Card Reproducer could determine whether a deck of punched cards were equivalent.  In 1957, John Van Gardner developed a system to compare the check sums of loaded sections of Fortran programs to debug compilation problems on the IBM 704.</p>
+
+<h2>See also</h2>
+<ul><li>Comparison of file comparison tools</li>
+<li>Computer-assisted reviewing</li>
+<li>Data differencing</li>
+<li>Delta encoding</li>
+<li>Document comparison</li>
+<li>Edit distance</li></ul>
+
+<h2>References</h2>
+<h2>External links</h2>
+<ul><li>File Comparison at Curlie</li></ul>

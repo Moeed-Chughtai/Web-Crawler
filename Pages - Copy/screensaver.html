@@ -1,0 +1,84 @@
+<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1033289096">
+
+<p>A <b>screensaver</b> (or <b>screen saver</b>) is a computer program that blanks the display screen or fills it with moving images or patterns, when the computer has been idle for a designated time. The original purpose of screensavers was to prevent phosphor burn-in on CRT or plasma computer monitors (hence the name). Though most modern monitors are not susceptible to this issue (with the notable exception of OLED technology, which has individual pixels vulnerable to burnout), screensaver programs are still used for other purposes. Screensavers are often set up to offer a basic layer of security, by requiring a password to re-access the device. Some screensaver programs also use otherwise-idle computer resources to do useful work, such as processing for distributed computing projects.
+</p><p>As well as computers, modern television operating systems, media players, and other digital entertainment systems may include optional screensavers.
+</p>
+
+<h2>Purpose</h2>
+<h3>Screen protection</h3>
+<p>Before the advent of LCD screens, most computer screens were based on cathode ray tubes (CRTs). When the same image is displayed on a CRT screen for long periods, the properties of the exposed areas of the phosphor coating on the inside of the screen gradually and permanently change, eventually leading to a darkened shadow or "ghost" image on the screen, called a screen burn-in. Cathode ray televisions, oscilloscopes and other devices that use CRTs are all susceptible to phosphor burn-in, as are plasma displays to some extent.
+</p><p>Screen-saver programs were designed to help avoid these effects by automatically changing the images on the screen during periods of user inactivity.
+</p><p>For CRTs used in public, such as ATMs and railway ticketing machines, the risk of burn-in is especially high because a stand-by display is shown whenever the machine is not in use. Older machines designed without burn-in problems taken into consideration often display evidence of screen damage, with images or text such as "Please insert your card" (in the case of ATMs) visible even when the display changes while the machine is in use. Blanking the screen is out of the question as the machine would appear to be out of service. In these applications, burn-in can be prevented by shifting the position of the display contents every few seconds, or by having a number of different images that are changed regularly.
+</p><p>Later CRTs were much less susceptible to burn-in than older models due to improvements in phosphor coatings, and because modern computer images are generally lower contrast than the stark green- or white-on-black text and graphics of earlier machines. LCD computer monitors, including the display panels used in laptop computers, are not susceptible to burn-in because the image is not directly produced by phosphors (although they can suffer from a less extreme and usually non-permanent form of image persistence).
+</p>
+
+<h3>Modern usage</h3>
+<p>While modern screens are not susceptible to the issues discussed above, screensavers are still used. Primarily these are for decorative/entertainment purposes, or for password protection. They usually feature moving images or patterns and sometimes sound effects.
+</p><p>As screensavers are generally expected to activate when users are away from their machines, many screensavers can be configured to ask users for a password before permitting the user to resume work. This is a basic security measure against another person accessing the machine while the user is absent.
+</p><p>Some screensavers activate a useful background task, such as a virus scan or a distributed computing application (such as the SETI@home project). This allows applications to use resources only when the computer would be otherwise idle.
+The Ken Burns panning and zooming effect is sometimes used to bring the image to life.
+</p>
+
+<h2>History</h2>
+<p>Decades before the first computers using this technology were invented, Robert A. Heinlein gave an example of how they might be used in his novel <i>Stranger In A Strange Land</i> (1961):</p>
+<blockquote class="templatequote"><p>Opposite his chair was a stereovision tank disguised as an aquarium; he switched it on, guppies and tetras gave way to the face of the well-known Winchell Augustus Greaves.</p></blockquote>
+<p>The first screensaver was allegedly written for the original IBM PC by John Socha, best known for creating the Norton Commander; he also coined the term <i>screen saver</i>. The screensaver, named <i>scrnsave</i>, was published in the December 1983 issue of the Softalk magazine. It simply blanked the screen after three minutes of inactivity (an interval which could be changed by recompiling the program).
+</p><p>By 1983 a Zenith Data Systems executive included "screen-saver" among the new Z-29 computer terminal's features, telling <i>InfoWorld</i> that it "blanks out the display after 15 minutes of nonactivity, preventing burned-in character displays". The first screensaver that allowed users to change the activating time was released on Apple's Lisa, in 1983.
+</p><p>The Atari 400 and 800's screens would also go through random screensaver-like color changes if they were left inactive for about 8 minutes. Normal users had no control over this, though programs did. These computers, released in 1979, are technically earlier "screen savers." Prior to these computers, games for the 1977 Atari VCS/2600 gaming console such as Combat and Breakout, included color cycling in order to prevent burn-in of game images into 1970s-era televisions. In addition, the first model of the TI-30 calculator from 1976 featured a screensaver, which consisted of a decimal point running across the display after 30 seconds of inactivity. This was chiefly used to save battery power, as the TI-30 LED display was more power intensive than later LCD models. These are examples of screensavers in ROM or the firmware of a computer.
+</p><p>Android 4.2 introduced "daydreams", screensavers that activate while the device is docked or charging.</p><p>In 2015 the screensaver "Event listeners" of van den Dorpel became the first work of art that was purchased by a museum (Museum of Applied Arts, Vienna) using the cryptocurrency bitcoin.</p><p>Today with the help of modern graphics technologies there is a wide variety of screensavers. Because of 3D computer graphics, which provide realistic environments, 3D screensavers are available.
+</p>
+
+<h2>Underlying architecture</h2>
+<p>Screensavers are usually designed and coded using a variety of programming languages as well as graphics interfaces. Typically the authors of screensavers use the C or C++ programming languages, along with Graphics Device Interface (GDI), such as OpenGL ("Open Graphics Library", which works on many, if not most, platforms capable of 3D rendering), or alternatives such as Microsoft DirectX (which is limited to Microsoft platforms, mainly Microsoft Windows and the Microsoft Xbox), to craft their final products. Several OS X screensavers are created and designed using Quartz Composer. The screensaver interfaces indirectly with the operating system to cause the physical display screen to be overlaid with one or more graphic "scenes". The screensaver typically terminates after receiving a message from the operating system that a key has been pressed or the mouse has been moved.
+</p>
+
+<h3>Microsoft Windows</h3>
+<p>If the system detects inactivity lasting longer than the time specified in the control panel, check if the active program is a simple program (and not another screensaver) by sending the "<code>WM_SYSCOMMAND</code>" message with the "<code>SC_SCREENSAVE</code>" argument. If the program calls in response the standard system function (<code>DefWindowProc</code>), the screensaver defined in the control panel screen runs.
+</p><p>A Windows screensaver is a regular Portable Executable (PE) with the <code>.scr</code> file extension. This enables malware authors to add ".scr" to the name of any win32 executable file, and thereby increase likelihood that users of Microsoft Windows will run it unintentionally. In addition, this program should support the following command line parameters:</p><p>With no parameter – shows the Settings dialog box or do nothing.
+</p>
+<pre>ScreenSaver.scr <code>/s</code>
+</pre>
+<p>Runs the screensaver.
+</p>
+<pre>ScreenSaver.scr <code>/p</code> or <code>/l</code> &lt;HWND&gt;
+</pre>
+<p>Previews the screensaver as child of window. <code>&lt;HWND&gt;</code> (presented as unsigned decimal number) is an identifier (handle) of the window in which to appear preview.
+</p>
+<pre>ScreenSaver.scr <code>/c</code>
+</pre>
+<p>Shows the Settings dialog box, modal to the foreground window.
+</p>
+<pre>ScreenSaver.scr <code>/a </code>&lt;HWND&gt;
+</pre>
+<p>Changes password, modal to window <code>&lt;HWND&gt;</code>. Windows 95 screensavers must handle it.
+</p>
+
+<h3>MacOS</h3>
+<p>Under MacOS, screensavers are regular MacOS application bundles with the <code>.saver</code> file extension.</p><p>Internally, the screensaver must define a class that is subclass of <code>ScreenSaverView</code>. The new class must be assigned as <code>NSPrincipalClass</code> in the xcode project, so that when the screensaver is launched by the system, this class gets instantiated.
+</p>
+
+<h3>Atari</h3>
+<p>As one of the first screensavers appeared in 8-bit Atari computers, forcing systemic color changes when the computer is idle lasting a few minutes (different times depending on the model), stored in the system ROM of the computer.
+</p>
+
+<h2>Considerations</h2>
+<p>Monitors running screensavers consume the same amount of power as when running normally, which can be anywhere from a few watts for small LCD monitors to several hundred for large plasma displays. Most modern computers can be set to switch the monitor into a lower power mode, blanking the screen altogether. A power-saving mode for monitors is usually part of the <b>power management</b> options supported in most modern operating systems, though it must also be supported by the computer hardware and monitor itself.
+</p><p>Using a screensaver with a flat panel or LCD screen not powering down the screen can actually decrease the lifetime of the display, since the fluorescent backlight remains lit and ages faster than it would if the screen is turned off and on frequently. As fluorescent tubes age they grow progressively dimmer, and they can be expensive or difficult to replace. A typical LCD screen loses about 50% of its brightness during a normal product lifetime. In most cases, the tube is an integral part of the LCD and the entire assembly needs to be replaced. This is not true of LED backlit displays.
+</p><p>Thus the term "screen saver" is now something of a misnomer – the best way to save the screen and also save electricity consumed by screen would simply be to have the computer turn off the monitor.  Screensavers displaying complex 3D graphics might even add to overall power draw.</p>
+
+<h2>Entertainment</h2>
+<p>After Dark was an early screensaver for the Macintosh platform, and later PC/Windows, which prominently featured whimsical designs such as "flying toasters". Perhaps in response to the workplace environment in which they are often viewed, many screensavers continue this legacy of whimsy by populating the idle monitor with animals or fish, games, and visual expressions of mathematics equations (through the use of fractals, Fourier transforms or other means) as in the Electric Sheep screensaver.
+</p><p>At least one screensaver, <i>Johnny Castaway</i> told a humorous animated story over many months. The ability of screensavers to divert and entertain is used for promotion, especially to build buzz for "event-based" products such as feature films.
+</p><p>The screensaver is also a creative outlet for computer programmers. The Unix-based screensaver XScreenSaver collects the display effects of other Unix screensavers, which are termed "display hacks" in the <i>jargon file</i> tradition of US computer science academics. It also collects forms of computer graphics effects called <i>demo effects</i>, such as were originally produced by the demo scene.
+</p>
+
+<h3>Microsoft Windows</h3>
+<p>On older versions of Microsoft Windows the native screensaver format had the potential to install a virus when run (as a screen saver was just an ordinary application with a different extension). When any file with the file suffix ".scr" was opened, for example from an e-mail attachment, Windows would execute the .scr (screensaver) file automatically: this had the potential to allow a virus or malware to install itself. Modern versions of Windows can read tags left by applications such as Internet Explorer and verify the publisher of the file, presenting a confirmation to the user.
+</p><p>On August 5, 2006, the BBC reported that "free screensavers" and "screensavers" respectively were the first and third most likely search terms to return links to malware, the second being BearShare.</p><p>By launching the "bubbles" screensaver executeable through the <code>bubbles.scr /p65552</code> command-line parameter, it runs as desktop wallpaper, the bubbles are smaller, and there are more bubbles on screen. This is an easter egg.</p>
+
+<h2>See also</h2>
+<ul><li>Degaussing</li></ul>
+
+<h2>References</h2>
+<h2>External links</h2>
+<ul><li>Screensaver at Curlie</li></ul>

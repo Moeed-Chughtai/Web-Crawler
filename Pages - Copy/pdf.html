@@ -1,0 +1,228 @@
+<p><b>Portable Document Format</b> (<b>PDF</b>), standardized as <b>ISO 32000</b>, is a file format developed by Adobe in 1992 to present documents, including text formatting and images, in a manner independent of application software, hardware, and operating systems. Based on the PostScript language, each PDF file encapsulates a complete description of a fixed-layout flat document, including the text, fonts, vector graphics, raster images and other information needed to display it. PDF has its roots in "The Camelot Project" initiated by  Adobe co-founder John Warnock in 1991.</p><p>PDF was standardized as ISO 32000 in 2008. The last edition as ISO 32000-2:2020 was published in December 2020.
+</p><p>PDF files may contain a variety of content besides flat text and graphics including logical structuring elements, interactive elements such as annotations and form-fields, layers, rich media (including video content), three-dimensional objects using U3D or PRC, and various other data formats. The PDF specification also provides for encryption and digital signatures, file attachments, and metadata to enable workflows requiring these features.
+</p>
+
+<h2>History</h2>
+<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1033289096">
+<p>Adobe Systems made the PDF specification available free of charge in 1993. In the early years PDF was popular mainly in desktop publishing workflows, and competed with a variety of formats such as DjVu, Envoy, Common Ground Digital Paper, Farallon Replica and even Adobe's own PostScript format.
+</p><p>PDF was a proprietary format controlled by Adobe until it was released as an open standard on July 1, 2008, and published by the International Organization for Standardization as ISO 32000-1:2008, at which time control of the specification passed to an ISO Committee of volunteer industry experts. In 2008, Adobe published a Public Patent License to ISO 32000-1 granting royalty-free rights for all patents owned by Adobe that are necessary to make, use, sell, and distribute PDF-compliant implementations.</p><p>PDF 1.7, the sixth edition of the PDF specification that became ISO 32000-1, includes some proprietary technologies defined only by Adobe, such as Adobe XML Forms Architecture (XFA) and JavaScript extension for Acrobat, which are referenced by ISO 32000-1 as normative and indispensable for the full implementation of the ISO 32000-1 specification. These proprietary technologies are not standardized and their specification is published only on Adobe's website. Many of them are also not supported by popular third-party implementations of PDF.
+</p><p>In December 2020, the second edition of PDF 2.0, ISO 32000-2:2020, was published, including clarifications, corrections and critical updates to normative references. ISO 32000-2 does not include any proprietary technologies as normative references.</p>
+
+<h2>Technical details</h2>
+<p>A PDF file is often a combination of vector graphics, text, and bitmap graphics. The basic types of content in a PDF are 
+</p>
+<ul><li>Typeset text stored as content streams (i.e., not encoded in plain text);</li>
+<li>Vector graphics for illustrations and designs that consist of shapes and lines;</li>
+<li>Raster graphics for photographs and other types of images</li>
+<li>Multimedia objects in the document.</li></ul><p>In later PDF revisions, a PDF document can also support links (inside document or web page), forms, JavaScript (initially available as a plugin for Acrobat 3.0), or any other types of embedded contents that can be handled using plug-ins.
+</p><p>PDF combines three technologies:
+</p>
+<ul><li>An equivalent subset of the PostScript page description programming language but in declarative form, for generating the layout and graphics.</li>
+<li>A font-embedding/replacement system to allow fonts to travel with the documents.</li>
+<li>A structured storage system to bundle these elements and any associated content into a single file, with data compression where appropriate.</li></ul>
+
+<h3>PostScript language</h3>
+<p>PostScript is a page description language run in an interpreter to generate an image, a process requiring many resources. It can handle graphics and standard features of programming languages such as <code>if</code> statements and <code>loop</code> commands. PDF is largely based on PostScript but simplified to remove flow control features like these, while graphics commands equivalent to <code>lineto</code> remain.
+</p><p>Historically, the PostScript-like PDF code is generated from a source PostScript file. The graphics commands that are output by the PostScript code are collected and tokenized. Any files, graphics, or fonts to which the document refers also are collected. Then, everything is compressed to a single file. Therefore, the entire PostScript world (fonts, layout, measurements) remains intact.</p><p>As a document format, PDF has several advantages over PostScript:
+</p>
+<ul><li>PDF contains tokenized and interpreted results of the PostScript source code, for direct correspondence between changes to items in the PDF page description and changes to the resulting page appearance.</li>
+<li>PDF (from version 1.4) supports transparent graphics; PostScript does not.</li>
+<li>PostScript is an interpreted programming language with an implicit global state, so instructions accompanying the description of one page can affect the appearance of any following page. Therefore, all preceding pages in a PostScript document must be processed to determine the correct appearance of a given page, whereas each page in a PDF document is unaffected by the others. As a result, PDF viewers allow the user to quickly jump to the final pages of a long document, whereas a PostScript viewer needs to process all pages sequentially before being able to display the destination page (unless the optional PostScript Document Structuring Conventions have been carefully compiled and included).</li></ul><p>PDF 1.6 and later supports interactive 3D documents embedded in a PDF file: 3D drawings can be embedded using U3D or PRC and various other data formats.</p>
+
+<h2>File format</h2>
+<p>A PDF file contains 7-bit ASCII characters, except for certain elements that may have binary content.
+The file starts with a header containing a magic number (as a readable string) and the version of the format, for example <code>%PDF-1.7</code>. The format is a subset of a COS ("Carousel" Object Structure) format. A COS tree file consists primarily of <i>objects</i>, of which there are nine types:</p>
+<ul><li>Boolean values, representing <i>true</i> or <i>false</i></li>
+<li>Real numbers</li>
+<li>Integers</li>
+<li>Strings, enclosed within parentheses (<code>(...)</code>) or represented as hexadecimal within single angle brackets (<code>&lt;...&gt;</code>). Strings may contain 8-bit characters.</li>
+<li>Names, starting with a forward slash (<code>/</code>)</li>
+<li>Arrays, ordered collections of objects enclosed within square brackets (<code>[...]</code>)</li>
+<li>Dictionaries, collections of objects indexed by names enclosed within double angle brackets (<code>&lt;&lt;...&gt;&gt;</code>)</li>
+<li>Streams, usually containing large amounts of optionally compressed binary data, preceded by a dictionary and enclosed between the <code>stream</code> and <code>endstream</code> keywords.</li>
+<li>The null object</li></ul><p>Furthermore, there may be comments, introduced with the percent sign (<code>%</code>). Comments may contain 8-bit characters.
+</p><p>Objects may be either <i>direct</i> (embedded in another object) or <i>indirect</i>. Indirect objects are numbered with an <i>object number</i> and a <i>generation number</i> and defined between the <code>obj</code> and <code>endobj</code> keywords if residing in the document root. Beginning with PDF version 1.5, indirect objects (except other streams) may also be located in special streams known as <i>object streams</i> (marked <code>/Type /ObjStm</code>). This technique enables non-stream objects to have standard stream filters applied to them, reduces the size of files that have large numbers of small indirect objects and is especially useful for <i>Tagged PDF</i>. Object streams do not support specifying an object's <i>generation number</i> (other than 0).
+</p><p>An index table, also called the cross-reference table, is located near the end of the file and gives the byte offset of each indirect object from the start of the file. This design allows for efficient random access to the objects in the file, and also allows for small changes to be made without rewriting the entire file (<i>incremental update</i>). Before PDF version 1.5, the table would always be in a special ASCII format, be marked with the <code>xref</code> keyword, and follow the main body composed of indirect objects. Version 1.5 introduced optional <i>cross-reference streams</i>, which have the form of a standard stream object, possibly with filters applied. Such a stream may be used instead of the ASCII cross-reference table and contains the offsets and other information in binary format. The format is flexible in that it allows for integer width specification (using the <code>/W</code> array), so that for example, a document not exceeding 64 KiB in size may dedicate only 2  bytes for object offsets.
+</p><p>At the end of a PDF file is a footer containing
+</p>
+<ul><li>The <code>startxref</code> keyword followed by an offset to the start of the cross-reference table (starting with the <code>xref</code> keyword) or the cross-reference stream object, followed by</li>
+<li>The <code>%%EOF</code> end-of-file marker.</li></ul><p>If a cross-reference stream is not being used, the footer is preceded by the <code>trailer</code> keyword followed by a dictionary containing information that would otherwise be contained in the cross-reference stream object's dictionary:
+</p>
+<ul><li>A reference to the root object of the tree structure, also known as the <i>catalog</i> (<code>/Root</code>)</li>
+<li>The count of indirect objects in the cross-reference table (<code>/Size</code>)</li>
+<li>Other optional information</li></ul><p>Within each page, there are one or multiple content streams that describe the text, vector and images being drawn on the page. The content stream is stack-based, similar to PostScript.</p><p>There are two layouts to the PDF files: non-linearized (not "optimized") and linearized ("optimized"). Non-linearized PDF files can be smaller than their linear counterparts, though they are slower to access because portions of the data required to assemble pages of the document are scattered throughout the PDF file. Linearized PDF files (also called "optimized" or "web optimized" PDF files) are constructed in a manner that enables them to be read in a Web browser plugin without waiting for the entire file to download, since all objects required for the first page to display are optimally organized at the start of the file. PDF files may be optimized using Adobe Acrobat software or QPDF.
+</p>
+
+<h2>Imaging model</h2>
+<p>The basic design of how graphics are represented in PDF is very similar to that of PostScript, except for the use of transparency, which was added in PDF 1.4.
+</p><p>PDF graphics use a device-independent Cartesian coordinate system to describe the surface of a page. A PDF page description can use a matrix to scale, rotate, or skew graphical elements. A key concept in PDF is that of the <i>graphics state</i>, which is a collection of graphical parameters that may be changed, saved, and restored by a <i>page description</i>. PDF has (as of version 2.0) 25 graphics state properties, of which some of the most important are:
+</p>
+<ul><li>The <i>current transformation matrix</i> (CTM), which determines the coordinate system</li>
+<li>The <i>clipping path</i></li>
+<li>The <i>color space</i></li>
+<li>The <i>alpha constant</i>, which is a key component of transparency</li>
+<li><i>Black point compensation</i> control (introduced in PDF 2.0)</li></ul>
+
+<h3>Vector graphics</h3>
+<p>As in PostScript, vector graphics in PDF are constructed with <i>paths</i>. Paths are usually composed of lines and cubic Bézier curves, but can also be constructed from the outlines of text. Unlike PostScript, PDF does not allow a single path to mix text outlines with lines and curves. Paths can be stroked, filled, fill then stroked, or used for clipping. Strokes and fills can use any color set in the graphics state, including <i>patterns</i>. PDF supports several types of patterns. The simplest is the <i>tiling pattern</i> in which a piece of artwork is specified to be drawn repeatedly. This may be a <i>colored tiling pattern</i>, with the colors specified in the pattern object, or an <i>uncolored tiling pattern</i>, which defers color specification to the time the pattern is drawn. Beginning with PDF 1.3 there is also a <i>shading pattern</i>, which draws continuously varying colors. There are seven types of shading patterns of which the simplest are the <i>axial shading</i> (Type 2) and <i>radial shading</i> (Type 3). 
+</p>
+
+<h3>Raster images</h3>
+<p>Raster images in PDF (called <i>Image XObjects</i>) are represented by dictionaries with an associated stream. The dictionary describes the properties of the image, and the stream contains the image data. (Less commonly, small raster images may be embedded directly in a page description as an <i>inline image</i>.) Images are typically <i>filtered</i> for compression purposes. Image filters supported in PDF include the following general-purpose filters:
+</p>
+<ul><li><i>ASCII85Decode</i>, a filter used to put the stream into 7-bit ASCII,</li>
+<li><i>ASCIIHexDecode</i>, similar to ASCII85Decode but less compact,</li>
+<li><i>FlateDecode</i>, a commonly used filter based on the deflate algorithm defined in RFC 1951 (deflate is also used in the gzip, PNG, and zip file formats among others); introduced in PDF 1.2; it can use one of two groups of predictor functions for more compact zlib/deflate compression: <i>Predictor 2</i> from the TIFF 6.0 specification and predictors (filters) from the PNG specification (<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1067248974">RFC 2083),</li>
+<li><i>LZWDecode</i>, a filter based on LZW Compression; it can use one of two groups of predictor functions for more compact LZW compression: <i>Predictor 2</i> from the TIFF 6.0 specification and predictors (filters) from the PNG specification,</li>
+<li><i>RunLengthDecode</i>, a simple compression method for streams with repetitive data using the run-length encoding algorithm and the image-specific filters,</li>
+<li><i>DCTDecode</i>, a lossy filter based on the JPEG standard,</li>
+<li><i>CCITTFaxDecode</i>, a lossless bi-level (black/white) filter based on the Group 3 or Group 4 CCITT (ITU-T) fax compression standard defined in ITU-T T.4 and T.6,</li>
+<li><i>JBIG2Decode</i>, a lossy or lossless bi-level (black/white) filter based on the JBIG2 standard, introduced in PDF 1.4, and</li>
+<li><i>JPXDecode</i>, a lossy or lossless filter based on the JPEG 2000 standard, introduced in PDF 1.5.</li></ul><p>Normally all image content in a PDF is embedded in the file. But PDF allows image data to be stored in external files by the use of <i>external streams</i> or <i>Alternate Images</i>. Standardized subsets of PDF, including PDF/A and PDF/X, prohibit these features.
+</p>
+
+<h3>Text</h3>
+<p>Text in PDF is represented by <i>text elements</i> in page content streams. A text element specifies that <i>characters</i> should be drawn at certain positions. The characters are specified using the <i>encoding</i> of a selected <i>font resource</i>.
+</p><p>A font object in PDF is a description of a digital typeface. It may either describe the characteristics of a typeface, or it may include an embedded <i>font file</i>. The latter case is called an <i>embedded font</i> while the former is called an <i>unembedded font</i>. The font files that may be embedded are based on widely used standard digital font formats: Type 1 (and its compressed variant CFF), TrueType, and (beginning with PDF 1.6) OpenType. Additionally PDF supports the Type 3 variant in which the components of the font are described by PDF graphic operators. 
+</p><p>Fourteen typefaces, known as the <i>standard 14 fonts</i>, have a special significance in PDF documents:
+</p>
+<ul><li>Times (v3) (in regular, italic, bold, and bold italic)</li>
+<li>Courier (in regular, oblique, bold and bold oblique)</li>
+<li>Helvetica (v3) (in regular, oblique, bold and bold oblique)</li>
+<li>Symbol</li>
+<li>Zapf Dingbats</li></ul><p>These fonts are sometimes called the <i>base fourteen fonts</i>. These fonts, or suitable substitute fonts with the same metrics, should be available in most PDF readers, but they are not <i>guaranteed</i> to be available in the reader, and may only display correctly if the system has them installed. Fonts may be substituted if they are not embedded in a PDF.
+</p><p>Within text strings, characters are shown using <i>character codes</i> (integers) that map to glyphs in the current font using an <i>encoding</i>. There are several predefined encodings, including <i>WinAnsi</i>, <i>MacRoman</i>, and many encodings for East Asian languages and a font can have its own built-in encoding. (Although the WinAnsi and MacRoman encodings are derived from the historical properties of the Windows and Macintosh operating systems, fonts using these encodings work equally well on any platform.) PDF can specify a predefined encoding to use, the font's built-in encoding or provide a lookup table of differences to a predefined or built-in encoding (not recommended with TrueType fonts). The encoding mechanisms in PDF were designed for Type 1 fonts, and the rules for applying them to TrueType fonts are complex.
+</p><p>For large fonts or fonts with non-standard glyphs, the special encodings <i>Identity-H</i> (for horizontal writing) and <i>Identity-V</i> (for vertical) are used. With such fonts, it is necessary to provide a <i>ToUnicode</i> table if semantic information about the characters is to be preserved.
+</p>
+
+<h3>Transparency</h3>
+<p>The original imaging model of PDF was, like PostScript's, <i>opaque</i>: each object drawn on the page completely replaced anything previously marked in the same location. In PDF 1.4 the imaging model was extended to allow transparency. When transparency is used, new objects interact with previously marked objects to produce blending effects. The addition of transparency to PDF was done by means of new extensions that were designed to be ignored in products written to PDF 1.3 and earlier specifications. As a result, files that use a small amount of transparency might view acceptably by older viewers, but files making extensive use of transparency could be viewed incorrectly by an older viewer.
+</p><p>The transparency extensions are based on the key concepts of <i>transparency groups</i>, <i>blending modes</i>, <i>shape</i>, and <i>alpha</i>. The model is closely aligned with the features of Adobe Illustrator version 9. The blend modes were based on those used by Adobe Photoshop at the time. When the PDF 1.4 specification was published, the formulas for calculating blend modes were kept secret by Adobe. They have since been published.</p><p>The concept of a transparency group in PDF specification is independent of existing notions of "group" or "layer" in applications such as Adobe Illustrator. Those groupings reflect logical relationships among objects that are meaningful when editing those objects, but they are not part of the imaging model.
+</p>
+
+<h2>Additional features</h2>
+<h3>Logical structure and accessibility</h3>
+<p>A "tagged" PDF (see clause 14.8 in ISO 32000) includes document structure and semantics information to enable reliable text extraction and accessibility. Technically speaking, tagged PDF is a stylized use of the format that builds on the logical structure framework introduced in PDF 1.3. Tagged PDF defines a set of standard structure types and attributes that allow page content (text, graphics, and images) to be extracted and reused for other purposes.</p><p>Tagged PDF is not required in situations where a PDF file is intended only for print. Since the feature is optional, and since the rules for Tagged PDF were relatively vague in ISO 32000-1, support for tagged PDF amongst consuming devices, including assistive technology (AT), is uneven as of 2021. ISO 32000-2, however, includes an improved discussion of tagged PDF which is anticipated to facilitate further adoption.
+</p><p>An ISO-standardized subset of PDF specifically targeted at accessibility, PDF/UA, was first published in 2012.
+</p>
+
+<h3>Optional Content Groups (layers)</h3>
+<p>With the introduction of PDF version, 1.5 (2003) came the concept of Layers. Layers, or as they are more formally known Optional Content Groups (OCGs), refer to sections of content in a PDF document that can be selectively viewed or hidden by document authors or viewers. This capability is useful in CAD drawings, layered artwork, maps, multi-language documents, etc.
+</p><p>Basically, it consists of an Optional Content Properties Dictionary added to the document root. This dictionary contains an array of Optional Content Groups (OCGs), each describing a set of information and each of which may be individually displayed or suppressed, plus a set of Optional Content Configuration Dictionaries, which give the status (Displayed or Suppressed) of the given OCGs.
+</p>
+
+<h3>Encryption and signatures</h3>
+<p>A PDF file may be encrypted, for security, in which case a password is needed to view or edit the contents. PDF 2.0 defines 256-bit AES encryption as standard for PDF 2.0 files. The PDF Reference also defines ways that third parties can define their own encryption systems for PDF.
+</p><p>PDF files may be digitally signed, to provide secure authentication; complete details on implementing digital signatures in PDF is provided in ISO 32000-2.
+</p><p>PDF files may also contain embedded DRM restrictions that provide further controls that limit copying, editing or printing. These restrictions depend on the reader software to obey them, so the security they provide is limited.
+</p><p>The standard security provided by PDF consists of two different methods and two different passwords: a <i>user password</i>, which encrypts the file and prevents opening, and an <i>owner password</i>, which specifies operations that should be restricted even when the document is decrypted, which can include modifying, printing, or copying text and graphics out of the document, or adding or modifying text notes and AcroForm fields. The user password encrypts the file, while the owner password does not, instead relying on client software to respect these restrictions. An owner password can easily be removed by software, including some free online services. Thus, the use restrictions that a document author places on a PDF document are not secure, and cannot be assured once the file is distributed; this warning is displayed when applying such restrictions using Adobe Acrobat software to create or edit PDF files.
+</p><p>Even without removing the password, most freeware or open source PDF readers ignore the permission "protections" and allow the user to print or make copy of excerpts of the text as if the document were not limited by password protection.</p><p>Beginning with PDF 1.5, Usage rights (UR) signatures are used to enable additional interactive features that are not available by default in a particular PDF viewer application. The signature is used to validate that the permissions have been granted by a bona fide granting authority. For example, it can be used to allow a user</p>
+<ul><li>To save the PDF document along with a modified form and/or annotation data</li>
+<li>Import form data files in FDF, XFDF, and text (CSV/TSV) formats</li>
+<li>Export form data files in FDF and XFDF formats</li>
+<li>Submit form data</li>
+<li>Instantiate new pages from named page templates</li>
+<li>Apply a digital signature to existing digital signature form field</li>
+<li>Create, delete, modify, copy, import, and export annotations</li></ul><p>For example, Adobe Systems grants permissions to enable additional features in Adobe Reader, using public-key cryptography. Adobe Reader verifies that the signature uses a certificate from an Adobe-authorized certificate authority. Any PDF application can use this same mechanism for its own purposes.</p><p>Under specific circumstances including non-patched systems of the receiver, the information the receiver of a digital signed document sees can be manipulated by the sender after the document has been signed by the signer.</p><p>PAdES (<i>PDF Advanced Electronic Signatures</i>) is a set of restrictions and extensions to PDF and ISO 32000-1 making it suitable for advanced electronic signatures. This is published by ETSI as TS 102 778.</p>
+
+<h3>File attachments</h3>
+<p>PDF files can have file attachments which processors may access and open or save to a local filesystem.</p>
+
+<h3>Metadata</h3>
+<p>PDF files can contain two types of metadata. The first is the Document Information Dictionary, a set of key/value fields such as author, title, subject, creation and update dates. This is optional and is referenced from <code>Info</code> key in the trailer of the file. A small set of fields is defined and can be extended with additional text values if required. This method is deprecated in PDF 2.0.
+</p><p>In PDF 1.4, support was added for Metadata Streams, using the Extensible Metadata Platform (XMP) to add XML standards-based extensible metadata as used in other file formats. PDF 2.0 allows metadata to be attached to any object in the document, such as information about embedded illustrations, fonts, images as well as the whole document (attaching to the document catalog), using an extensible schema.
+</p><p>PDF documents can also contain display settings, including the page display layout and zoom level in a Viewer Preferences object. Adobe Reader uses these settings to override the user's default settings when opening the document. The free Adobe Reader cannot remove these settings.
+</p>
+
+<h3>Accessibility</h3>
+<p>PDF files can be created specifically to be accessible for people with disabilities. PDF file formats in use as of 2014 can include tags, text equivalents, captions, audio descriptions, and more. Some software can automatically produce tagged PDFs, but this feature is not always enabled by default. Leading screen readers, including JAWS, Window-Eyes, Hal, and Kurzweil 1000 and 3000 can read tagged PDF. Moreover, tagged PDFs can be re-flowed and magnified for readers with visual impairments. Adding tags to older PDFs and those that are generated from scanned documents can present some challenges.
+</p><p>One of the significant challenges with PDF accessibility is that PDF documents have three distinct views, which, depending on the document's creation, can be inconsistent with each other. The three views are (i) the physical view, (ii) the tags view, and (iii) the content view. The physical view is displayed and printed (what most people consider a PDF document). The tags view is what screen readers and other assistive technologies use to deliver high-quality navigation and reading experience to users with disabilities. The content view is based on the physical order of objects within the PDF's content stream and may be displayed by software that does not fully support the tags' view, such as the Reflow feature in Adobe's Reader.
+</p><p>PDF/UA, the International Standard for accessible PDF based on ISO 32000-1 was first published as ISO 14289–1 in 2012 and establishes normative language for accessible PDF technology.
+</p>
+
+<h3>Multimedia</h3>
+<p><i>Rich Media PDF</i> is a PDF file including interactive content that can be embedded or linked within the file.
+</p>
+
+<h3>Forms</h3>
+<p><i>Interactive Forms</i> is a mechanism to add forms to the PDF file format. PDF currently supports two different methods for integrating data and PDF forms. Both formats today coexist in the PDF specification:</p>
+<ul><li>AcroForms (also known as Acrobat forms), introduced in the PDF 1.2 format specification and included in all later PDF specifications.</li>
+<li>XML Forms Architecture (XFA) forms, introduced in the PDF 1.5 format specification. Adobe XFA Forms are not compatible with AcroForms. XFA was deprecated from PDF with PDF 2.0.</li></ul><p>AcroForms were introduced in the PDF 1.2 format. AcroForms permit using objects (<i>e.g.</i> text boxes, Radio buttons, <i>etc.</i>) and some code (<i>e.g.</i> JavaScript). Alongside the standard PDF action types, interactive forms (AcroForms) support submitting, resetting, and importing data. The "submit" action transmits the names and values of selected interactive form fields to a specified uniform resource locator (URL). Interactive form field names and values may be submitted in any of the following formats, (depending on the settings of the action's ExportFormat, SubmitPDF, and XFDF flags):</p>
+<dl><dt>HTML Form format</dt>
+<dd>HTML 4.01 Specification since PDF 1.5; HTML 2.0 since 1.2</dd>
+<dt><span id="Forms_Data_Format_(FDF)"></span>Forms Data Format (FDF)</dt>
+<dd>based on PDF, uses the same syntax and has essentially the same file structure, but is much simpler than PDF since the body of an FDF document consists of only one required object. Forms Data Format is defined in the PDF specification (since PDF 1.2). The Forms Data Format can be used when submitting form data to a server, receiving the response, and incorporating it into the interactive form. It can also be used to export form data to stand-alone files that can be imported back into the corresponding PDF interactive form. FDF was originally defined in 1996 as part of ISO 32000-2:2017.</dd>
+<dt>XML Forms Data Format (XFDF)</dt>
+<dd>(external XML Forms Data Format Specification, Version 2.0; supported since PDF 1.5; it replaced the "XML" form submission format defined in PDF 1.4) the XML version of Forms Data Format, but the XFDF implements only a subset of FDF containing forms and annotations. Some entries in the FDF dictionary do not have XFDF equivalents – such as the Status, Encoding, JavaScript, Page's keys, EmbeddedFDFs, Differences, and Target. In addition, XFDF does not allow the spawning, or addition, of new pages based on the given data; as can be done when using an FDF file. The XFDF specification is referenced (but not included) in PDF 1.5 specification (and in later versions). It is described separately in <i>XML Forms Data Format Specification</i>. The PDF 1.4 specification allowed form submissions in XML format, but this was replaced by submissions in XFDF format in the PDF 1.5 specification. XFDF conforms to the XML standard. XFDF can be used in the same way as FDF; e.g., form data is submitted to a server, modifications are made, then sent back and the new form data is imported in an interactive form. It can also be used to export form data to stand-alone files that can be imported back into the corresponding PDF interactive form. As of August, 2019, XFDF 3.0 is an ISO/IEC standard under the formal name <i>ISO 19444-1:2019 - Document management — XML Forms Data Format — Part 1: Use of ISO 32000-2 (XFDF 3.0)</i>. This standard is a normative reference of ISO 32000-2.</dd>
+<dt>PDF</dt></dl><p>The entire document can be submitted rather than individual fields and values, as was defined in PDF 1.4.
+</p><p>AcroForms can keep form field values in external stand-alone files containing key-value pairs. The external files may use Forms Data Format (FDF) and XML Forms Data Format (XFDF) files. The usage rights (UR) signatures define rights for import form data files in FDF, XFDF and text (CSV/TSV) formats, and export form data files in FDF and XFDF formats.</p><p>In PDF 1.5, Adobe Systems introduced a proprietary format for forms; Adobe XML Forms Architecture (XFA). Adobe XFA Forms are not compatible with ISO 32000's AcroForms feature, and most PDF processors do not handle XFA content. The XFA specification is referenced from ISO 32000-1/PDF 1.7 as an external proprietary specification, and was entirely deprecated from PDF with ISO 32000-2 (PDF 2.0).
+</p>
+
+<h2>Licensing</h2>
+<p>Anyone may create applications that can read and write PDF files without having to pay royalties to Adobe Systems; Adobe holds patents to PDF, but licenses them for royalty-free use in developing software complying with its PDF specification.</p>
+
+<h2>Security</h2>
+<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1033289096">
+<p>In November 2019, researchers from Ruhr University Bochum and Hackmanit GmbH published attacks on digitally signed PDFs . They showed how to change the visible content in a signed PDF without invalidating the signature in 21 of 22 desktop PDF viewers and 6 of 8 online validation services by abusing implementation flaws.
+At the same conference, they additionally showed how to exfiltrate the plaintext of encrypted content in PDFs. In 2021, they showed new so-called <i>shadow attacks</i> on PDFs that abuse the flexibility of features provided in the specification. An overview of security issues in PDFs regarding denial of service, information disclosure, data manipulation, and Arbitrary code execution attacks was presented by Jens Müller.</p><p>PDF attachments carrying viruses were first discovered in 2001. The virus, named <i>OUTLOOK.PDFWorm</i> or <i>Peachy</i>, uses Microsoft Outlook to send itself as an attached Adobe PDF file. It was activated with Adobe Acrobat, but not with Acrobat Reader.</p><p>From time to time, new vulnerabilities are discovered in various versions of Adobe Reader, prompting the company to issue security fixes. Other PDF readers are also susceptible. One aggravating factor is that a PDF reader can be configured to start automatically if a web page has an embedded PDF file, providing a vector for attack. If a malicious web page contains an infected PDF file that takes advantage of a vulnerability in the PDF reader, the system may be compromised even if the browser is secure. Some of these vulnerabilities are a result of the PDF standard allowing PDF documents to be scripted with JavaScript. Disabling JavaScript execution in the PDF reader can help mitigate such future exploits, although it does not protect against exploits in other parts of the PDF viewing software. Security experts say that JavaScript is not essential for a PDF reader and that the security benefit that comes from disabling JavaScript outweighs any compatibility issues caused. One way of avoiding PDF file exploits is to have a local or web service convert files to another format before viewing.
+</p><p>On March 30, 2010 security researcher Didier Stevens reported an Adobe Reader and Foxit Reader exploit that runs a malicious executable if the user allows it to launch when asked.</p>
+
+<h2>Software</h2>
+<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1033289096">
+
+<h3>Viewers and editors</h3>
+<p>PDF viewers are generally provided free of charge, and many versions are available from a variety of sources.
+</p><p>There are many software options for creating PDFs, including the PDF printing capabilities built into macOS, iOS, and most Linux distributions, LibreOffice, Microsoft Office 2007 (if updated to SP2) and later, WordPerfect 9, Scribus, numerous PDF print drivers for Microsoft Windows, the pdfTeX typesetting system, the DocBook PDF tools, applications developed around Ghostscript and Adobe Acrobat itself as well as Adobe InDesign, Adobe FrameMaker, Adobe Illustrator, Adobe Photoshop. Google's online office suite Google Docs allows for uploading and saving to PDF. Some web apps offer free PDF editing and annotation tools.
+</p><p>The Free Software Foundation once thought of as one of their high priority projects to be "developing a free, high-quality and fully functional set of libraries and programs that implement the PDF file format and associated technologies to the ISO 32000 standard." In 2011, however, the GNU PDF project was removed from the list of "high priority projects" due to the maturation of the Poppler library, which has enjoyed wider use in applications such as Evince with the GNOME desktop environment. Poppler is based on Xpdf code base. There are also commercial development libraries available as listed in List of PDF software.
+</p><p>The Apache PDFBox project of the Apache Software Foundation is an open source Java library for working with PDF documents. PDFBox is licensed under the Apache License.</p>
+
+<h3>Printing</h3>
+<p>Raster image processors (RIPs) are used to convert PDF files into a raster format suitable for imaging onto paper and other media in printers, digital production presses and prepress in a process known as rasterisation. RIPs capable of processing PDF directly include the Adobe PDF Print Engine from Adobe Systems and Jaws and the Harlequin RIP from Global Graphics.
+</p><p>In 1993, the Jaws raster image processor from Global Graphics became the first shipping prepress RIP that interpreted PDF natively without conversion to another format. The company released an upgrade to their Harlequin RIP with the same capability in 1997.</p><p>Agfa-Gevaert introduced and shipped Apogee, the first prepress workflow system based on PDF, in 1997.
+</p><p>Many commercial offset printers have accepted the submission of press-ready PDF files as a print source, specifically the PDF/X-1a subset and variations of the same. The submission of press-ready PDF files is a replacement for the problematic need for receiving collected native working files.
+</p><p>In 2006, PDF was widely accepted as the standard print job format at the Open Source Development Labs Printing Summit. It is supported as a print job format by the Common Unix Printing System and desktop application projects such as GNOME, KDE, Firefox, Thunderbird, LibreOffice and OpenOffice have switched to emit print jobs in PDF.</p><p>Some desktop printers also support direct PDF printing, which can interpret PDF data without external help.
+</p>
+
+<h3>Native display model</h3>
+<p>PDF was selected as the "native" metafile format for Mac OS X, replacing the PICT format of the earlier classic Mac OS. The imaging model of the Quartz graphics layer is based on the model common to Display PostScript and PDF, leading to the nickname <i>Display PDF</i>. The Preview application can display PDF files, as can version 2.0 and later of the Safari web browser. System-level support for PDF allows Mac OS X applications to create PDF documents automatically, provided they support the OS-standard printing architecture. The files are then exported in PDF 1.3 format according to the file header. When taking a screenshot under Mac OS X versions 10.0 through 10.3, the image was also captured as a PDF; later versions save screen captures as a PNG file, though this behavior can be set back to PDF if desired.
+</p>
+
+<h3>Annotation</h3>
+<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1033289096">
+<p>Adobe Acrobat is one example of proprietary software that allows the user to annotate, highlight, and add notes to already created PDF files. One UNIX application available as free software (under the GNU General Public License) is PDFedit. The freeware Foxit Reader, available for Microsoft Windows, macOS and Linux, allows annotating documents. Tracker Software's PDF-XChange Viewer allows annotations and markups without restrictions in its freeware alternative. Apple's macOS's integrated PDF viewer, Preview, does also enable annotations as does the open-source software Skim, with the latter supporting interaction with LaTeX, SyncTeX, and PDFSync and integration with BibDesk reference management software. Freeware Qiqqa can create an annotation report that summarizes all the annotations and notes one has made across their library of PDFs. The Text Verification Tool exports differences in documents as annotations and markups.
+</p><p>There are also web annotation systems that support annotation in pdf and other documents formats. In cases where PDFs are expected to have all of the functionality of paper documents, ink annotation is required.
+</p>
+
+<h2>Alternatives</h2>
+<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1033289096">
+<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1033289096">
+<p>The Open XML Paper Specification is a competing format used both as a page description language and as the native print spooler format for Microsoft Windows since Windows Vista.
+</p><p>Mixed Object: Document Content Architecture is a competing format. MO:DCA-P is a part of Advanced Function Presentation.
+</p>
+
+<h2>See also</h2>
+<ul><li>Web document</li>
+<li>XSL Formatting Objects</li></ul>
+
+<h2>References</h2>
+<h2>Further reading</h2>
+<ul><li><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1067248974"><cite id="CITEREFHardyBrailsford2002" class="citation book cs1">Hardy, M. R. B.; Brailsford, D. F. (2002). "Mapping and displaying structural transformations between XML and PDF". <i>Proceedings of the 2002 ACM symposium on Document engineering – DocEng '02</i> <span>(PDF)</span>. Proceedings of the 2002 ACM symposium on Document engineering. pp. 95–102. doi:10.1145/585058.585077. ISBN <bdi>1-58113-594-7</bdi>. S2CID 9371237.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=bookitem&amp;rft.atitle=Mapping+and+displaying+structural+transformations+between+XML+and+PDF&amp;rft.btitle=Proceedings+of+the+2002+ACM+symposium+on+Document+engineering+%E2%80%93+DocEng+%2702&amp;rft.pages=95-102&amp;rft.pub=Proceedings+of+the+2002+ACM+symposium+on+Document+engineering&amp;rft.date=2002&amp;rft_id=https%3A%2F%2Fapi.semanticscholar.org%2FCorpusID%3A9371237%23id-name%3DS2CID&amp;rft_id=info%3Adoi%2F10.1145%2F585058.585077&amp;rft.isbn=1-58113-594-7&amp;rft.aulast=Hardy&amp;rft.aufirst=M.+R.+B.&amp;rft.au=Brailsford%2C+D.+F.&amp;rft_id=http%3A%2F%2Fwww.cs.nott.ac.uk%2F~dfb%2FPublications%2FDownload%2F2002%2FHardy02.pdf&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3APDF"></span></li>
+<li>PDF 2.0 <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1067248974"><cite class="citation web cs1">"ISO 32000-2:2020(en), Document management — Portable document format — Part 2: PDF 2.0". <i>www.iso.org</i><span>. Retrieved <span>2020-12-16</span></span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=unknown&amp;rft.jtitle=www.iso.org&amp;rft.atitle=ISO+32000-2%3A2020%28en%29%2C+Document+management+%E2%80%94+Portable+document+format+%E2%80%94+Part+2%3A+PDF+2.0&amp;rft_id=https%3A%2F%2Fwww.iso.org%2Fstandard%2F75839.html&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3APDF"></span></li>
+<li>PDF 2.0 <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1067248974"><cite class="citation web cs1">"ISO 32000-2:2017(en), Document management — Portable document format — Part 2: PDF 2.0". <i>www.iso.org</i><span>. Retrieved <span>2019-01-31</span></span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=unknown&amp;rft.jtitle=www.iso.org&amp;rft.atitle=ISO+32000-2%3A2017%28en%29%2C+Document+management+%E2%80%94+Portable+document+format+%E2%80%94+Part+2%3A+PDF+2.0&amp;rft_id=https%3A%2F%2Fwww.iso.org%2Fstandard%2F63534.html&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3APDF"></span></li>
+<li>PDF 1.7 (ISO 32000-1:2008)</li>
+<li>PDF 1.7 and errata to 1.7</li>
+<li>PDF 1.6 (<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1067248974">ISBN 0-321-30474-8) and errata to 1.6</li>
+<li>PDF 1.5 and errata to 1.5</li>
+<li>PDF 1.4 (<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1067248974">ISBN 0-201-75839-3) and errata to 1.4</li>
+<li>PDF 1.3 (<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1067248974">ISBN 0-201-61588-6) and errata to 1.3</li></ul>
+
+<h2>External links</h2>
+<ul><li>PDF Association – The PDF Association is the industry association for software developers producing or processing PDF files.</li>
+<li>Adobe PDF 101: Summary of PDF</li>
+<li>Adobe: PostScript vs. PDF – Official introductory comparison of PS, EPS vs. PDF.</li>
+<li>PDF Standards....transitioning the PDF specification from a de facto standard to a de jure standard at the Wayback Machine (archived April 24, 2011) – Information about PDF/E and PDF/UA specification for accessible documents file format (archived by The Wayback Machine)</li>
+<li>PDF/A-1 ISO standard published by the International Organization for Standardization (with corrigenda)</li>
+<li>PDF Reference and Adobe Extensions to the PDF Specification</li>
+<li>Portable Document Format: An Introduction for Programmers – Introduction to PDF vs. PostScript and PDF internals (up to v1.3)</li>
+<li>The Camelot Paper – the paper in which John Warnock outlined the project that created PDF</li>
+<li>Everything you wanted to know about PDF but was afraid to ask – recording of a talk by Leonard Rosenthol (45 mins) (Adobe Systems) at TUG 2007</li></ul>

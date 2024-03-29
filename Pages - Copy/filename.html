@@ -1,0 +1,143 @@
+<p class="mw-empty-elt">
+</p>
+
+
+<p>A <b>filename</b> or <b>file name</b> is a name used to uniquely identify a computer file in a directory structure. Different file systems impose different restrictions on filename lengths.
+</p><p>A filename may (depending on the file system) include:
+</p>
+<ul><li><b>name</b> – base name of the file</li>
+<li><b>extension</b> (format or <b>extension</b>) – indicates the content of the file (e.g. <code>.txt</code>, <code>.exe</code>, <code>.html</code>, <code>.COM</code>, <code>.c~</code> etc.)</li></ul><p>The components required to identify a file by utilities and applications varies across operating systems, as does the syntax and format for a valid filename. 
+</p><p>Filenames may contain any arbitrary bytes the user chooses. This may include things like a revision or generation number of the file such as computer code, a numerical sequence number (widely used by digital cameras through the <i>DCF</i> standard), a date and time (widely used by smartphone camera software and for screenshots), and/or a comment such as the name of a subject or a location or any other text to facilitate the searching the files. In fact, even unprintable characters, including bell, 0x00, Return and LineFeed can be part of a filename, although most utilities do not handle them well.
+</p><p>Some people use of the term filename when referring to a complete specification of device, subdirectories and filename such as the Windows <i>C:\Program Files\Microsoft Games\Chess\Chess.exe</i>. The filename in this case is <i>Chess.exe</i>. Some utilities have settings to suppress the extension as with MS Windows Explorer.
+</p>
+
+<h2>History</h2>
+<p>In early Personal_computers using the CP/M operating system, with the File_Allocation_Table filesystem, filenames were always 11 characters. This was referred to as the 8.3_filename with a maximum of an 8 byte name and a maximum of a 3 byte extension. Utilities and applications allowed users to specify filenames without trailing spaces and include a dot before the extension.  The dot was not actually stored in the directory. Using only 7 bit characters allowed several file attributes to be included in the actual filename by using the high-order-bit. These attributes included Readonly, Archive, HIDDEN and SYS. Eventually this was too restrictive and the number of characters allowed increased. The attribute bits were moved to a special block of the file including additional information. This led to compatibility problems when moving files between different file systems.</p><p>During the 1970s, some mainframe and minicomputers  where files on the system were identified by a user name, or account number.
+</p><p>For example, on Digital Equipment Corporation RSTS/E and TOPS-10 operating systems, files were identified by
+</p>
+<ul><li>optional device name (one or two characters) followed by an optional unit number, and a colon ":". If not present, it was presumed to be SY:</li>
+<li>the account number, consisting of a bracket "[", a pair of numbers separated by a comma, and followed by a close bracket "]". If omitted, it was presumed to be yours.</li>
+<li>mandatory file name, consisting of 1 to 6 characters (upper-case letters or digits)</li>
+<li>optional 3-character extension.</li></ul><p>On the IBM OS/VS1, OS/390 and MVS operating systems, a file name was up to 44 characters, consisting of upper case letters, digits, and the period. A file name must start with a letter or number, a period must occur at least once each 8 characters, two consecutive periods could not appear in the name, and must end with a letter or digit. By convention, the letters and numbers before the first period was the account number of the owner or the project it belonged to, but there was no requirement to use this convention.<br></p><p>On the McGill University MUSIC/SP system, file names consisted of
+</p>
+<ul><li>Optional account number, which was one to four characters followed by a colon.If the account number was missing, it was presumed to be in your account, but if it was not, it was presumed to be in the *COM: pseudo-account, which is where all files marked as public were catalogued.</li>
+<li>1-17 character file name, which could be upper case letters or digits, and the period, with the requirement it not begin or end with a period, or have two consecutive periods.</li></ul><p>The Univac VS/9 operating system had file names consisting of 
+</p>
+<ul><li>Account name, consisting of a dollar sign "$", a 1-7 character (letter or digit) username, and a period ("."). If not present it was presumed to be in your account, but if it wasn't, the operating system would look in the system manager's account $TSOS. If you typed in a dollae sign only as the account, this would indicate the file was in the $TSOS account <i>unless</i> the first 1-7 character of the file name before the first period matched an actual account name, then that account was used, e.g. ABLE.BAKER is a file in your account, but if not there the system would search for $TSOS.ABLE.BAKER, but if $ABLE.BAKER was specified, the file $TSOS.ABLE.BAKER would be used <i>unless</i> $ABLE was a valid account, then it would look for a file named BAKER in that account.</li>
+<li>File name, 1-56 characters (letters and digits) separated by periods. File names cannot start or end with a period, nor can two consecutive periods appear.</li></ul><p>In 1985, RFC 959 officially defined a <i>pathname</i> to be the character string that must be entered into a file system by a user in order to identify a file.</p><p>Around 1995, VFAT, an extension to the MS-DOS FAT filesystem, was introduced in Windows 95 and Windows NT. It allowed mixed-case Unicode long filenames (LFNs), in addition to classic "8.3" names.
+</p>
+
+<h2>References: absolute vs relative</h2>
+<p>An absolute reference includes all directory levels. In some systems, a filename reference that does not include the complete directory path defaults to the current working directory. This is a relative reference. One advantage of using a relative reference in program configuration files or scripts is that different instances of the script or program can use different files.
+</p><p>This makes an absolute or relative path composed of a sequence of filenames.
+</p>
+
+<h2>Number of names per file</h2>
+<p>Unix-like file systems allow a file to have more than one name; in traditional Unix-style file systems, the names are hard links to the file's inode or equivalent. Windows supports hard links on NTFS file systems, and provides the command <code>fsutil</code> in Windows XP, and <code>mklink</code> in later versions, for creating them. Hard links are different from Windows shortcuts, classic Mac OS/macOS aliases, or symbolic links. The introduction of LFNs with VFAT allowed filename aliases. For example, <code>longfi~1.???</code> with a maximum of eight plus three characters was a filename alias of "<code>long file name.???</code>" as a way to conform to 8.3 limitations for older programs.
+</p><p>This property was used by the move command algorithm that first creates a second filename and then only removes the first filename.
+</p><p>Other filesystems, by design, provide only one filename per file, which guarantees that alteration of one filename's file does not alter the other filename's file.
+</p>
+
+<h2><span id="8.3"></span><span id="18.3"></span>Length restrictions</h2>
+<p>Some filesystems restrict the length of filenames. In some cases, these lengths apply to the entire file name, as in 44 characters on IBM S/370. In other cases, the length limits may apply to particular portions of the filename, such as the name of a file in a directory, or a directory name. For example, 9 (e.g., 8-bit FAT in Standalone Disk BASIC), 11 (e.g. FAT12, FAT16, FAT32 in DOS), 14 (e.g. early Unix), 21 (Human68K), 31, 30 (e.g. Apple DOS 3.2 and 3.3), 15 (e.g. Apple ProDOS), 44 (e.g. IBM S/370), or 255 (e.g. early Berkeley Unix) characters or bytes. Length limits often result from assigning fixed space in a filesystem to storing components of names, so increasing limits often requires an incompatible change, as well as reserving more space.
+</p><p>A particular issue with filesystems that store information in nested directories is that it may be possible to create a file with a complete pathname that exceeds implementation limits, since length checking may apply only to individual parts of the name rather than the entire name. Many Windows applications are limited to a <code>MAX_PATH</code> value of 260, but Windows file names can easily exceed this limit [1]. From Windows 10, version 1607, MAX_PATH limitations have been removed.</p>
+
+<h2>Filename extensions</h2>
+<p>Many file systems, including FAT, NTFS, and VMS systems, consider as filename extension the part of the file name that consists of one or more characters following the last period in the filename, dividing the filename into two parts: a <i>base name</i> or <i>stem</i> and an <i>extension</i> or <i>suffix</i> used by some applications to indicate the file type. Multiple output files created by an application use the same basename and various extensions. For example, a compiler might use the extension <code>FOR</code> for source input file (for Fortran code), <code>OBJ</code> for the object output and <code>LST</code> for the listing. Although there are some common extensions, they are arbitrary and a different application might use <code>REL</code> and <code>RPT</code>. Extensions have been restricted, at least historically on some systems, to a length of 3 characters, but in general can have any length, e.g., <code>html</code>.
+</p>
+
+<h2>Encoding interoperability</h2>
+<p>There is no general encoding standard for filenames.
+</p><p>File names have to be exchanged between software environments for network file transfer, file system storage, backup and file synchronization software, configuration management, data compression and archiving, etc. It is thus very important not to lose file name information between applications. This led to wide adoption of Unicode as a standard for encoding file names, although legacy software might not be Unicode-aware.
+</p>
+
+<h3>Encoding indication interoperability</h3>
+<p>Traditionally, filenames allowed any character in their filenames as long as they were file system safe. Although this permitted the use of any encoding, and thus allowed the representation of any local text on any local system, it caused many interoperability issues.
+</p><p>A filename could be stored using different byte strings in distinct systems within a single country, such as if one used Japanese Shift JIS encoding and another Japanese EUC encoding. Conversion was not possible as most systems did not expose a description of the encoding used for a filename as part of the extended file information. This forced costly filename encoding guessing with each file access.</p><p>A solution was to adopt Unicode as the encoding for filenames.
+</p><p>In the classic Mac OS, however, encoding of the filename was stored with the filename attributes.</p>
+
+<h3>Unicode interoperability</h3>
+<p>The Unicode standard solves the encoding determination issue.
+</p><p>Nonetheless, some limited interoperability issues remain, such as normalization (equivalence), or the Unicode version in use. For instance, UDF is limited to Unicode 2.0; macOS's HFS+ file system applies NFD Unicode normalization and is optionally case-sensitive (case-insensitive by default.) Filename maximum length is not standard and might depend on the code unit size. Although it is a serious issue, in most cases this is a limited one.</p><p>On Linux, this means the filename is not enough to open a file: additionally, the exact byte representation of the filename on the storage device is needed. This can be solved at the application level, with some tricky normalization calls.</p><p>The issue of Unicode equivalence is known as "normalized-name collision". A solution is the <i>Non-normalizing Unicode Composition Awareness</i> used in the Subversion and Apache technical communities. This solution does not normalize paths in the repository. Paths are only normalized for the purpose of comparisons. Nonetheless, some communities have patented this strategy, forbidding its use by other communities.</p>
+
+<h3>Perspectives</h3>
+<p>To limit interoperability issues, some ideas described by Sun are to:
+</p>
+<ul><li>use one Unicode encoding (such as UTF-8)</li>
+<li>do transparent code conversions on filenames</li>
+<li>store no normalized filenames</li>
+<li>check for canonical equivalence among filenames, to avoid two canonically equivalent filenames in the same directory.</li></ul><p>Those considerations create a limitation not allowing a switch to a future encoding different from UTF-8.
+</p>
+
+<h3>Unicode migration</h3>
+<p>One issue was migration to Unicode.
+For this purpose, several software companies provided software for migrating filenames to the new Unicode encoding.
+</p>
+<ul><li>Microsoft provided migration transparent for the user throughout the VFAT technology</li>
+<li>Apple provided "File Name Encoding Repair Utility v1.0".</li>
+<li>The Linux community provided “convmv”.</li></ul><p>Mac OS X 10.3 marked Apple's adoption of Unicode 3.2 character decomposition, superseding the Unicode 2.1 decomposition used previously. This change caused problems for developers writing software for Mac OS X.</p>
+
+<h2>Uniqueness</h2>
+<p>Within a single directory, filenames must be unique. Since the filename syntax also applies for directories, it is not possible to create a file and directory entries with the same name in a single directory. Multiple files in different directories may have the same name.
+</p><p>Uniqueness approach may differ both on the case sensitivity and on the Unicode normalization form such as NFC, NFD.
+This means two separate files might be created with the same text filename and a different byte implementation of the filename, such as L"\x00C0.txt" (UTF-16, NFC) (Latin capital A with grave) and L"\x0041\x0300.txt" (UTF-16, NFD) (Latin capital A, grave combining).</p>
+
+<h2>Letter case preservation</h2>
+<p>Some filesystems, such as FAT, store filenames as upper-case regardless of the letter case used to create them. For example, a file created with the name "MyName.Txt" or "myname.txt" would be stored with the filename "MYNAME.TXT". Any variation of upper and lower case can be used to refer to the same file. These kinds of file systems are called <b>case-insensitive</b> and are not <b>case-preserving</b>. Some filesystems prohibit the use of lower case letters in filenames altogether.
+</p><p>Some file systems store filenames in the form that they were originally created; these are referred to as <b>case-retentive</b> or <b>case-preserving</b>. Such a file system can be <b>case-sensitive</b> or <b>case-insensitive</b>. If case-sensitive, then "MyName.Txt" and "myname.txt" may refer to two different files in the same directory, and each file must be referenced by the exact capitalization by which it is named. On a case-insensitive, case-preserving file system, on the other hand, only one of "MyName.Txt", "myname.txt" and "Myname.TXT" can be the name of a file in a given directory at a given time, and a file with one of these names can be referenced by any capitalization of the name.
+</p><p>From its original inception, Unix and its derivative systems were case-preserving. However, not all Unix-like file systems are case-sensitive; by default, HFS+ in macOS is case-insensitive, and SMB servers usually provide case-insensitive behavior (even when the underlying file system is case-sensitive, e.g. Samba on most Unix-like systems), and SMB client file systems provide case-insensitive behavior. File system case sensitivity is a considerable challenge for software such as Samba and Wine, which must interoperate efficiently with both systems that treat uppercase and lowercase files as different and with systems that treat them the same.</p>
+
+<h2>Reserved characters and words</h2>
+<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1033289096">
+<p>File systems have not always provided the same character set for composing a filename. Before Unicode became a de facto standard, file systems mostly used a locale-dependent character set. By contrast, some new systems permit a filename to be composed of almost any character of the Unicode repertoire, and even some non-Unicode byte sequences. Limitations may be imposed by the file system, operating system, application, or requirements for interoperability with other systems.
+</p><p>Many file system utilities prohibit control characters from appearing in filenames. In Unix-like file systems, the <span id="null"></span>null character and the path separator <code>/</code> are prohibited.
+</p>
+
+<h3>In Windows</h3>
+<p>File system utilities and naming conventions on various systems prohibit particular characters from appearing in filenames or make them problematic:</p>
+<p><span id="Anc1"></span>Note 1: While they are allowed in Unix file and folder names, most Unix shells require specific characters such as spaces, &lt;, &gt;, |, \, and sometimes :, (, ), &amp;, ;, #, as well as wildcards such as ? and *, to be quoted or escaped:
+</p>
+<blockquote><p><code>five\ and\ six\&lt;seven</code> (example of escaping)<br><code>'five and six&lt;seven'</code> or <code>"five and six&lt;seven"</code> (examples of quoting)</p></blockquote>
+<p>The character <span>å</span> (<code>0xE5</code>) was not allowed as the first letter in a filename under 86-DOS and MS-DOS/PC DOS 1.x-2.x, but can be used in later versions.
+</p><p>In Windows utilities, the space and the period are not allowed as the final character of a filename. The period is allowed as the first character, but some Windows applications, such as Windows Explorer, forbid creating or renaming such files (despite this convention being used in Unix-like systems to describe hidden files and directories). Workarounds include appending a dot when renaming the file (that is then automatically removed afterwards), using alternative file managers, creating the file using the command line, or saving a file with the desired filename from within an application.</p><p>Some file systems on a given operating system (especially file systems originally implemented on other operating systems), and particular applications on that operating system, may apply further restrictions and interpretations. See comparison of file systems for more details on restrictions.
+</p><p>In Unix-like systems, DOS, and Windows, the filenames "." and ".." have special meanings (current and parent directory respectively). Windows 95/98/ME also uses names like "...", "...." and so on to denote grandparent or great-grandparent directories. All Windows versions forbid creation of filenames that consist of only dots, although names consist of three dots ("...") or more are legal in Unix.
+</p><p>In addition, in Windows and DOS utilities, some words are also reserved and cannot be used as filenames. For example, DOS device files:</p>
+<pre>CON, PRN, AUX, CLOCK$, NUL
+COM0, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9
+LPT0, LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9
+LST (only in 86-DOS and DOS 1.xx)
+KEYBD$, SCREEN$ (only in multitasking MS-DOS 4.0)
+$IDLE$ (only in Concurrent DOS 386, Multiuser DOS and DR DOS 5.0 and higher)
+CONFIG$ (only in MS-DOS 7.0-8.0)
+</pre>
+<p>Systems that have these restrictions cause incompatibilities with some other filesystems. For example, Windows will fail to handle, or raise error reports for, these legal UNIX filenames: aux.c, q"uote"s.txt, or NUL.txt.
+</p><p>NTFS filenames that are used internally include:
+</p>
+<pre>$Mft, $MftMirr, $LogFile, $Volume, $AttrDef, $Bitmap, $Boot, $BadClus, $Secure,
+$Upcase, $Extend, $Quota, $ObjId and $Reparse
+</pre>
+
+<h2>Comparison of filename limitations</h2>
+<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1033289096">
+
+<h2>See also</h2>
+<ul><li>File system</li>
+<li>Fully qualified file name</li>
+<li>Long filename</li>
+<li>Path (computing)</li>
+<li>Slug (Web publishing)</li>
+<li>Symbolic link</li>
+<li>Uniform Resource Identifier (URI)</li>
+<li>Uniform Resource Locator (URL) and Internationalized resource identifier</li>
+<li>Windows (Win32) File Naming Conventions (Filesystem Agnostic)</li></ul>
+
+<h2>References</h2>
+<h2>External links</h2>
+<ul><li>Data Formats Filename at Curlie</li>
+<li>File Extension Library</li>
+<li>FILExt</li>
+<li>WikiExt - File Extensions Encyclopedia</li>
+<li>Naming Files, Paths, and Namespaces (MSDN)</li>
+<li>2009 POSIX portable filename character set</li>
+<li>Standard ECMA-208, December 1994, System-Independent Data Format</li>
+<li><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1067248974"><cite class="citation cs2"><i>Best Practices for File Naming</i>, USA: Stanford University Libraries, Data Management Services</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Best+Practices+for+File+Naming&amp;rft.place=USA&amp;rft.pub=Stanford+University+Libraries%2C+Data+Management+Services&amp;rft_id=http%3A%2F%2Flibrary.stanford.edu%2Fresearch%2Fdata-management-services%2Fdata-best-practices%2Fbest-practices-file-naming&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3AFilename"></span></li></ul>

@@ -1,0 +1,32 @@
+<p>A <b>changelog</b> is a log or record of all notable changes made to a project.  The project is often a <a href='website.html'>website</a> or software project, and the changelog usually includes records of changes such as bug fixes, new features, etc.  Some open-source projects include a changelog as one of the top-level files in their distribution.
+</p><p>A changelog has historically included all changes made to a project.  The "Keep a Changelog" site instead advocates that a changelog <i>not</i> include <i>all</i> changes, but that it should instead contain "a curated, chronologically ordered list of notable changes for each version of a project" and should not be a "dump" of a git log "because this helps nobody".</p><p>Although the canonical naming convention for the file is <i>ChangeLog</i>, it is sometimes alternatively named as <i>CHANGES</i> or <i>HISTORY</i> (<i>NEWS</i> is usually a <a href='diff.html'>diff</a>erent file reflecting changes between releases, not between the commits).  Another convention is to call it a <i>CHANGELOG</i>. Some project maintainers will append a <i>.txt</i> suffix to the file name if the changelog is plain text, a <i>.md</i> suffix if it is in Markdown, or a <i>.rst</i> suffix if it is in reStructuredText.
+</p><p>Some revision control systems are able to generate the relevant information for a changelog, if the goal is to include all changes.</p><p>A golang Change Log is synonymous with a set of code changes and the associated code review.</p>
+
+<h2>Format</h2>
+<p>Changelog files are organized by paragraphs, which define a unique change within a function or file.
+The GNU Coding standards recommend the following format:</p>
+<pre>YYYY-MM-DD  John Doe  &lt;johndoe@example.com&gt;
+
+    * myfile.ext (myfunction): my changes made
+    additional changes
+
+    * myfile.ext (unrelated_change): my changes made
+    to myfile.ext but completely unrelated to the above
+
+    * anotherfile.ext (somefunction): more changes made by me
+</pre>
+<p>Note that between the date and the name, and again between the name and the email address, there are two spaces each. It is common to enclose the email address in &lt; and &gt;. The Emacs editor creates such entries when creating additional changelog entries.
+</p>
+
+<h2>Changelogs in <a href='wiki.html'>wiki</a>s</h2>
+<p>Most wiki software includes <i>changelogs</i> as a fundamental feature (often called <i>history</i> in this context). For example, the "View history" link at the top of a Wikipedia entry links to that page's changelog. This feature is vital for complying with the attribution requirements of some copyright licenses.</p>
+
+<h2>Product changelogs</h2>
+<p>A product changelog can keep customers in the loop about what's new. It helps to announce new features, latest releases, and relevant news directly in-app.</p>
+
+<h2>See also</h2>
+<h2>Notes</h2>
+<h2>External links</h2>
+<ul><li>GNU Coding Standards: Change Logs</li>
+<li>Keep a CHANGELOG</li>
+<li>Checklist for creating a changelog</li></ul>

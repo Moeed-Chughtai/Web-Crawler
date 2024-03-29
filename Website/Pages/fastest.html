@@ -1,0 +1,48 @@
+<p>
+<b>Fastest</b> is a model-based testing tool that works with specifications written in the Z notation.  The tool implements (Cristia &amp; Rodriguez Monetti 2009) the Test Template Framework (TTF) proposed by Phil Stocks and David Carrington in (Stocks &amp; Carrington 1996).
+</p>
+
+<h2>Usage</h2>
+<p>Fastest presents a command-line user interface. The user first needs to load a Z specification written in LaTeX format verifying the ISO standard (Z Standard 2002). Then, the user has to enter a list of the operations to test as well as the testing tactics to apply to each of them. In a third step Fastest generates the testing tree of each operation. After testing trees have been generated, users can browse them and their test classes, and, more importantly, they can prune any test class both automatically or manually. Once testing trees have been pruned, users can instruct Fastest to find one abstract test case for each leaf in each testing tree. (Cristia, Rodriguez Monetti &amp; Albertengo 2009)
+</p>
+
+<h2>Testing tactics supported by Fastest</h2>
+<p>Currently, Fastest supports the following testing tactics:
+</p>
+<ul><li>Disjunctive Normal Form (DNF). It is the only testing tactic applied by default (regardless of whether the user has added or not other testing tactics) and the first one to be applied.</li>
+<li>Standard partitions (SP). The user can add, modify and delete standard partitions for any predefined Z mathematical operator by simply editing a text file (Cristia, Rodriguez Monetti &amp; Albertengo 2009).</li>
+<li>Free Types (FT)</li>
+<li>In Set Extension (ISE)</li>
+<li>Proper Subset of Set Extension (PSSE)</li>
+<li>Subset of Set Extension (SSE)</li></ul>
+
+<h2>Pruning testing trees in Fastest</h2>
+<p>Fastest provides two ways of pruning testing trees (Cristia, Rodriguez Monetti &amp; Albertengo 2010):
+</p>
+<ul><li>Automatic pruning.</li></ul><dl><dd>To prune a testing tree, Fastest analyzes the predicate of each leaf to determine if the predicate is a contradiction or not. Since this problem is undecidable, the tool implements a best-effort algorithm that can be improved by users. The most important aspect of the algorithm is a library of so called <i>elimination theorems</i> each of which represents a family of contradictions. This library can be extended by users by simply editing a text file. <i>Elimination theorems</i> are  conjunctions of parametric Z atomic predicates.</dd></dl><ul><li>Manual pruning.</li></ul><dl><dd>Fastest users can prune subtrees or individual leaves of testing trees by issuing two commands. These commands will prune all the test classes in the subtree regardless of them being empty or not. The main purpose of these commands is to allow engineers to reduce the number of or to eliminate unimportant test cases.</dd></dl>
+
+<h2>How Fastest finds abstract test cases</h2>
+<p>The tool finds abstract test cases by calculating a finite model for each leaf in a testing tree (Cristia &amp; Rodriguez Monetti 2009). Finite models are calculated by restricting the type of each VIS variable to a finite set and then by calculating the Cartesian product between these sets. Each leaf predicate is evaluated on each element of this Cartesian product until one satisfies the predicate (meaning that an abstract test case was found) or until it is exhausted (meaning that either the test class is unsatisfiable or the finite model is inadequate). In the last case, the user has the chance to assist the tool in finding the right finite model or to prune the test class because it is unsatisfiable.
+</p>
+
+<h2>Architecture and technology</h2>
+<p>Fastest is a Java application based on the  Community Z Tools (CZT) project. The tool can be used in one of two modes (Cristia &amp; Rodriguez Monetti 2009):
+</p>
+<ul><li>In <i>distributed mode</i> Fastest works as a client–server application. The application can be installed in a number of computers each acting as client, a server or both. Users access the application through clients which send test classes to servers (called <i>testing servers</i>) which try to find an abstract test case out of them. In this way the heaviest task is distributed across as many computers as possible. Since the calculation of an abstract test case from a test class is completely independent from each other, this architecture speeds up the entire process proportionally with respect to the number of testing servers.</li>
+<li>In <i>application mode</i> each instance of Fastest is completely independent of each other. All the tasks are computed in the local computer.</li></ul>
+
+<h3>Adding new testing tactics</h3>
+<p>As can be seen from the TTF presentation, testing tactics are essential to the method. They are the tools that engineers must use to create the most discovering test cases possible. Then, the more sound testing tactics available to engineers the better.
+</p><p>In Fastest users can add testing tactics of their own by implementing the Tactic interface provided by the tool. This interface has methods to configure and apply testing tactics. The interface definition is the following:
+</p>
+
+<h2>See also</h2>
+<ul><li>Test Template Framework</li>
+<li>Model-based testing</li></ul>
+
+<h2>Notes</h2>
+<h2>References</h2>
+<ul><li><cite id="CITEREFCristiaRodriguez_Monetti2009" class="citation conference cs1">Cristiá, Maximiliano; Rodríguez Monetti, Pablo (2009). "Implementing and Applying the Stocks-Carrington Framework for Model-Based Testing". <i>Formal Methods and Software Engineering, 11th International Conference on Formal Engineering Methods, ICFEM 2009</i>. Rio de Janeiro, Brazil: Springer-Verlag.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=conference&amp;rft.atitle=Implementing+and+Applying+the+Stocks-Carrington+Framework+for+Model-Based+Testing&amp;rft.btitle=Formal+Methods+and+Software+Engineering%2C+11th+International+Conference+on+Formal+Engineering+Methods%2C+ICFEM+2009&amp;rft.place=Rio+de+Janeiro%2C+Brazil&amp;rft.pub=Springer-Verlag&amp;rft.date=2009&amp;rft.aulast=Cristi%C3%A1&amp;rft.aufirst=Maximiliano&amp;rft.au=Rodr%C3%ADguez+Monetti%2C+Pablo&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3AFastest"></span></li>
+<li><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1067248974"><cite id="CITEREFStocksCarrington1996" class="citation cs2">Stocks, Phil; Carrington, David (1996), "A framework for specification-based testing", <i>IEEE Transactions on Software Engineering</i>, <b>22</b> (11): 777–793, doi:10.1109/32.553698</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.jtitle=IEEE+Transactions+on+Software+Engineering&amp;rft.atitle=A+framework+for+specification-based+testing&amp;rft.volume=22&amp;rft.issue=11&amp;rft.pages=777-793&amp;rft.date=1996&amp;rft_id=info%3Adoi%2F10.1109%2F32.553698&amp;rft.aulast=Stocks&amp;rft.aufirst=Phil&amp;rft.au=Carrington%2C+David&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3AFastest"></span>.</li>
+<li><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1067248974"><cite id="CITEREFZ_Standard2002" class="citation cs2"><i>Information Technology — Z Formal Specification Notation — Syntax, Type System and Semantics</i> <span>(1 MB PDF)</span> (ISO/IEC 13568:2002 ed.), 2002, pp. 196 pages</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Information+Technology+%E2%80%94+Z+Formal+Specification+Notation+%E2%80%94+Syntax%2C+Type+System+and+Semantics&amp;rft.pages=196+pages&amp;rft.edition=%5Bhttp%3A%2F%2Fwww.iso.ch%2Fiso%2Fen%2FCatalogueDetailPage.CatalogueDetail%3FCSNUMBER%3D21573+ISO%2FIEC+13568%3A2002%5D&amp;rft.date=2002&amp;rft_id=http%3A%2F%2Fstandards.iso.org%2Fittf%2FPubliclyAvailableStandards%2Fc021573_ISO_IEC_13568_2002%28E%29.zip&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3AFastest"></span> <span><code class="cs1-code">{{citation}}</code>: </span><span>External link in <code class="cs1-code"><code class="cs1-code">|edition=</code></code> (help)</span>.</li>
+<li><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1067248974"><cite id="CITEREFCristiaRodriguez_MonettiAlbertengo2010" class="citation conference cs1">Cristiá, Maximiliano; Albertengo, Pablo; Rodríguez Monetti, Pablo (2010). "Pruning Testing Trees in the Test Template Framework by Detecting Mathematical Contradictions". <i>8th IEEE International Conference on Software Engineering and Formal Methods (SEFM), 2010</i>. Pisa, Italy: IEEE.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=conference&amp;rft.atitle=Pruning+Testing+Trees+in+the+Test+Template+Framework+by+Detecting+Mathematical+Contradictions&amp;rft.btitle=8th+IEEE+International+Conference+on+Software+Engineering+and+Formal+Methods+%28SEFM%29%2C+2010&amp;rft.place=Pisa%2C+Italy&amp;rft.pub=IEEE&amp;rft.date=2010&amp;rft.aulast=Cristi%C3%A1&amp;rft.aufirst=Maximiliano&amp;rft.au=Albertengo%2C+Pablo&amp;rft.au=Rodr%C3%ADguez+Monetti%2C+Pablo&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3AFastest"></span></li></ul>

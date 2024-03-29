@@ -1,0 +1,56 @@
+<p class="mw-empty-elt">
+</p>
+<p>The C programming language provides many standard library functions for file input and output. These functions make up the bulk of the C standard library header <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span>&lt;stdio.h&gt;</span>. The functionality descends from a "portable I/O package" written by Mike Lesk at Bell Labs in the early 1970s, and officially became part of the Unix operating system in Version 7.</p><p>The I/O functionality of C is fairly low-level by modern standards; C abstracts all file operations into operations on streams of bytes, which may be "input streams" or "output streams". Unlike some earlier programming languages, C has no direct support for random-access data files; to read from a record in the middle of a file, the programmer must create a stream, seek to the middle of the file, and then read bytes in sequence from the stream.
+</p><p>The stream model of file I/O was popularized by Unix, which was developed concurrently with the C programming language itself. The vast majority of modern operating systems have inherited streams from Unix, and many languages in the C programming language family have inherited C's file I/O interface with few if any changes (for example, PHP).
+</p>
+
+<h2>Overview</h2>
+<p>This library uses what are called streams to operate with physical devices such as keyboards, printers, terminals or with any other type of files supported by the system. Streams are an abstraction to interact with these in a uniform way. All streams have similar properties independent of the individual characteristics of the physical media they are associated with.</p>
+
+<h3>Functions</h3>
+<p>Most of the C file input/output functions are defined in <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span>&lt;stdio.h&gt;</span> (or in the C++ header <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span>cstdio</span>, which contains the standard C functionality but in the <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span>std</span> <a href='namespace.html'>namespace</a>).
+</p>
+
+<h3>Constants</h3>
+<p>Constants defined in the <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span>&lt;stdio.h&gt;</span> header include:
+</p>
+
+<h3>Variables</h3>
+<p>Variables defined in the <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span>&lt;stdio.h&gt;</span> header include:
+</p>
+
+<h3>Member types</h3>
+<p>Data types defined in the <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span>&lt;stdio.h&gt;</span> header include:
+</p>
+<ul><li><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span>FILE</span> – also known as a <span id="file_handle"></span><b>file handle</b>, this is an opaque type containing the information about a file or text stream needed to perform input or output operations on it, including:
+<ul><li>platform-specific identifier of the associated I/O device, such as a file descriptor</li>
+<li>the buffer</li>
+<li>stream orientation indicator (unset, narrow, or wide)</li>
+<li>stream buffering state indicator (unbuffered, line buffered, fully buffered)</li>
+<li>I/O mode indicator (input stream, output stream, or update stream)</li>
+<li>binary/text mode indicator</li>
+<li>end-of-file indicator</li>
+<li>error indicator</li>
+<li>the current stream position and multibyte conversion state (an object of type mbstate_t)</li>
+<li>reentrant lock (required as of C11)</li></ul></li>
+<li><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span>fpos_t</span> – a non-array type capable of uniquely identifying the position of every byte in a file and every conversion state that can occur in all supported multibyte character encodings</li>
+<li><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span>size_t</span> – an unsigned integer type which is the type of the result of the <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span>sizeof</span> operator.</li></ul>
+
+<h3>Extensions<span id="POSIX"></span></h3>
+<p>The POSIX standard defines several extensions to <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span>stdio</span> in its Base Definitions, among which are a <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span>readline</span> function that allocates memory, the <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span>fileno</span> and <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span>fdopen</span> functions that establish the link between <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span>FILE</span> objects and file descriptors, and a group of functions for creating <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span>FILE</span> objects that refer to in-memory buffers.</p>
+
+<h2>Example</h2>
+<p>The following C program opens a binary file called <i>myfile</i>, reads five bytes from it, and then closes the file.
+</p>
+
+<h2>Alternatives to stdio<span id="Sfio"></span></h2>
+<p>Several alternatives to <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span>stdio</span> have been developed. Among these is the C++ <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span>iostream</span> library, part of the ISO C++ standard. ISO C++ still requires the <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span>stdio</span> functionality.
+</p><p>Other alternatives include the SFIO (A Safe/Fast I/O Library) library from AT&amp;T Bell Laboratories. This library, introduced in 1991, aimed to avoid inconsistencies, unsafe practices and inefficiencies in the design of <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"><span>stdio</span>. Among its features is the possibility to insert callback functions into a stream to customize the handling of data read from or written to the stream. It was released to the outside world in 1997, and the last release was 1 February 2005.</p>
+
+<h2>See also</h2>
+<ul><li>printf format string</li>
+<li>scanf format string</li></ul>
+
+<h2>References</h2>
+<h2>External links</h2>
+<ul><li> Media related to C file input/output at Wikimedia Commons</li></ul>

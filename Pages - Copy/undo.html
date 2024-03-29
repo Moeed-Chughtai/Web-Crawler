@@ -1,0 +1,82 @@
+<link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1033289096">
+<p><b>Undo</b> is an interaction technique which is implemented in many computer programs. It erases the last change done to the document, reverting it to an older state. In some more advanced programs, such as graphic processing, undo will negate the last command done to the file being edited. With the possibility of undo, users can explore and work without fear of making mistakes, because they can easily be undone.
+</p><p>The expectations for undo are easy to understand: to have a predictable functionality, and to include all "undoable" commands. Usually undo is available until the user undoes all executed operations. But there are some actions which are not stored in the undo list, and thus they cannot be undone. For example, <i>save file</i> is not undoable, but is queued in the list to show that it was executed. Another action which is usually not stored, and thus not undoable, is <i>scrolling</i> or <i>selection</i>.</p><p>The opposite of undo is <i>redo</i>. The redo command reverses the undo or advances the buffer to a more recent state.
+</p><p>The common components of undo functionality are the <i>commands</i> which were executed of the user, the <i>history buffer(s)</i> which stores the completed actions, the <i>undo/redo manager</i> for controlling the history buffer, and the <i>user interface</i> for interacting with the user.</p><p>In most Microsoft Windows applications, the keyboard shortcut for the undo command is Ctrl+Z or Alt+Backspace, and the shortcut for redo is Ctrl+Y or Ctrl+Shift+Z.
+</p><p>In most Apple Macintosh applications, the shortcut for the undo command is Command-Z, and the shortcut for redo is Command-Shift-Z.
+</p><p>On all platforms, the undo/redo functions can also be accessed via the Edit menu.
+</p>
+
+<h2>History</h2>
+<p>The ability to undo an operation on a computer was independently invented multiple times, in response to how people used computers.</p><p>The File Retrieval and Editing System, developed starting in 1968 at Brown University, is reported to be the first computer-based system to have had an "undo" feature.</p><p>Warren Teitelman developed a <i>Programmer's Assistant</i> as part of BBN-LISP with an Undo function, by 1971.</p><p>The Xerox PARC Bravo text editor had an Undo command in 1974. 
+A 1976 research report by Lance A. Miller and John C. Thomas of IBM, <i>Behavioral Issues in the Use of Interactive Systems</i>, noted that "it would be quite useful to permit users to 'take back' at least the immediately preceding command (by issuing some special 'undo' command)." The programmers at the Xerox PARC research center assigned the keyboard shortcut Ctrl-Z to the undo command, which became a crucial feature of text editors and word processors in the personal computer era.  In 1980, Larry Tesler of Xerox PARC began working at Apple Computer. There, he and Bill Atkinson advocated for the presence of an undo command as a standard fixture on the Apple Lisa.  Atkinson was able to convince the individual developers of the Lisa's application software to include a single level of undo and redo, but was unsuccessful in lobbying for multiple levels. When Apple introduced the Lisa's successor, the Macintosh, it stipulated that all standard applications should include an “Undo” as the first command in the “Edit” menu, which has remained the standard on macOS and Windows to this day.
+</p><p>Multi-level undo commands were introduced in the 1980s, allowing the users to take back a series of actions, not just the most recent one. EMACS and other timeshared screen editors had it before personal computer software. CygnusEd was the first Amiga text editor with an unlimited undo/redo feature. AtariWriter, a word-processing application introduced in 1982, featured undo. NewWord, another word-processing program released by NewStar in 1984, had an unerase command. IBM's VisiWord also had an undelete command.
+</p>
+
+<h2>Undo and redo models</h2>
+<p>Undo models can be categorized as linear or non-linear. The non-linear undo model can be sub-classified in script model, us&amp;r model, triadic model, and selective undo.</p><p>Some common properties of models are:
+</p>
+<ul><li><i>stable execution property:</i> A state is represented as an ordered list of commands. This means that a command "is always undone in the state that was reached after the original execution."</li>
+<li><i>weakened stable execution:</i> This means that if undo is executed all commands which depend on the undone command are undone dependent on the command.</li>
+<li><i>stable result property:</i> This property has the similar meaning like the <i>stable execution property</i> except for the list. The ordered list of commands includes that they were executed instead of only the commands.</li>
+<li><i>commutative:</i> That means that the reached state after undo and redo two different commands is the same when they are executed in the converse order.</li>
+<li><i>minimalistic undo property:</i> It describes that "undo operation of command C undoes only command C and all commands younger than C which are dependent on C."</li></ul>
+
+<h3>Linear undo</h3>
+<p>Linear undo is implemented with a stack (last in first out (LIFO) data structure) that stores a history of all executed commands. When a new command is executed it is added to the top of stack. Therefore, only the last executed command can be undone and removed from the history. Undo can be repeated as long as the history is not empty.</p>
+
+<h4>Restricted linear model</h4>
+<p>The restricted linear model is an augmentation of the linear undo model. It satisfies the above described <i>stable execution property</i> for linear undo, because this model does not keep the property if a command is done while the history list includes other commands. The restricted linear model clears the history list before a new command is added. But other restrictions are available, too. For example, the size of the history list can be restricted or when a defined size is reached, the first executed command is deleted from the list.</p>
+
+<h3>Non-linear undo</h3>
+<p>The main difference between linear undo and non-linear undo is the possibility of the user to undo the executed commands in an arbitrary order. They have the chance to undo not the most recently command but rather choose a command from the list. For non linear model there are subclasses which implement this model.
+</p>
+
+<h4>Script model</h4>
+<p>The script model handles user actions as editing a script of commands. The history list of the executed commands are interpreted "as a script, the effect of an undo is defined to be the same as if the undone action had never occurred in the first place." As the result of undo the state has to be the way as if the undone command was never executed. A disadvantage of this model is that the user has to know the connection between undone command and the current state to avoid side effects. One of this can be for example duplication. Other problems are that if "subsequent commands are redone in a different state that they were originally executed in direct manipulation interfaces, this reinterpretation of the original user action is not always obvious or well defined".</p>
+
+<h4>US&amp;R model</h4>
+<p>The special feature of this model is that it has the option of skipping a command. This means that redoing a command can be skipped. The command which is skipped is marked as skipped but not deleted. When new commands are executed, the history list is retained, so the order of the executed commands can be reproducible with that. The order can be described through a history tree which is a directed graph, "because it is possible to continue redoing commands from another branch creating a link in the graph". Even though the set of commands is simple and easy to understand, the complex structure with skipping and linking branches is hard to comprehend and to remember, when the user wants to undo more than one step.</p>
+
+<h4>Triadic model</h4>
+<p>This non-linear undo model has besides undo and redo the possibility to rotate. It has the same data structure as the above-mentioned models with a history list and a separated redo list which includes the redo operations. The rotate operation sets the last command of the redo list in front of it. On one hand this means that the next command to be redone can be selected by placing it in front. On the other hand, rotation can be used "to select the place in the redo list where the next undo operation will put the command". The list of redo is therefore unordered. "To undo an isolated command, the user has to undo a number of steps, rotate the redo list, and then redo a number of steps". For redo the list has to be rotated until the wanted command is above.
+</p>
+
+<h3>Selective undo</h3>
+<p>Jakubec et al. say that selective undo is a feature which a model can offer but for selective undo there is no clear definition. The authors selected functions which a model should have when it supports selective undo. It should be possible to "undo any executed action in the history buffer. Actions independent of the action being undone should be left untouched". Just like that redo has to be possible to any undone command. The third function for selective undo is that "no command can be automatically discarded from history buffer without direct user’s request." For selective undo applies that undo and redo is executable outside of any context. There are three main issues. The first is that undone commands can be outside of the originally context. Through this there can be dead references which have to be handled. The second issue that modified commands can be undone and so it has to be solved which state after undo will be presented. The third issue is discarding command problems. Selective undo has no pointer in the lists, so this means that no command should be discarded of the stack.</p>
+
+<h4>Direct selective undo</h4>
+<p>Direct selective undo is an extension of restricted linear undo with a history tree. The operation creates a copy of the selected command, executes this and add it to the history list. There two non-linear operations selective undo and selective redo are defined, so it is more symmetric.</p>
+
+<h3>Multiuser application</h3>
+<p>When multiple users can edit the same document simultaneously, a multi-user undo is needed. <i>Global</i> multi-user undo reverts the latest action made to the document, regardless of who performed the edit. <i>Local</i> multi-user undo only reverts actions done by the local user, which requires a non-linear undo implementation.
+</p><p>Where undo can be used to backtrack through multiple edits, the redo command goes forward through the action history. Making a new edit usually clears the redo list. If a branching redo model is used, the new edit <i>branches</i> the action history.
+</p><p>The number of previous actions that can be undone varies by program, version, and hardware or software capabilities. For example, the default undo/redo stack size in Adobe Photoshop is 20 but can be changed by the user. As another example, earlier versions of Microsoft Paint only allowed up to three edits to be undone; the version introduced in Windows 7 increased this limit to 50.
+</p><p>Simplistic, single-edit undo features sometimes do away with "redo" by treating the undo command itself as an action that can be undone. This is known as the flip undo model, because the user can flip between two program states using the undo command. This was the standard model prior to the widespread adoption of multiple-level undo in the early 1990s.
+</p>
+
+<h2>Undo implementation</h2>
+<p>Undo can be implemented through different patterns. The most common patterns are command pattern and memento pattern.
+</p>
+
+<h3>Command pattern</h3>
+<p>The command pattern is a software design pattern which encapsulates information from the operation into command objects. This means that every action is stored in an object. The abstract command class implements an abstract execute operation, so every command object has an execute operation. For undo there also have to be unexecuted operation, which undoes the effect of the executed command, which are stored in a history list. Undo and redo are implemented so that the list is run through forwards and backwards when the execute or unexecute command is called.</p><p>For single undo only the executed command is stored. In contrast to the multi level undo where not only the history list with the commands is saved but also the number of undo levels can be determined of the maximum length of the list.</p>
+
+<h3>Memento pattern</h3>
+<p>With memento pattern the internal state of an object is stored. The object in which the state is saved, is called memento and is organized through the memento originator. This returns a memento, initialized with information of the current state, when undo is executed, so that the state can be checked. The memento is only visible for the originator.
+</p><p>In memento pattern the undo mechanism is called caretaker. It is responsible for the safekeeping of the mementos but never change the contents of these. For undo the caretaker requests a memento of the originator and then applying the undo.</p><p>The most part of undo mechanism can implemented without dependency to specific applications or command classes. This includes "the management of history list, the history scroller, menu entries for undo and redo and update of the menu entries depending on the name of the next available command."</p><p>Every command class has a do method which is called when a command is executed. The undo-method implements the reverse operation of the do-method. To implement the reverse, there are several different strategies.
+</p>
+<ul><li><i>full checkpoint<b>:</b></i> That means that the complete state is saved after a command is executed. This is the easiest implementation, but is not highly efficient and therefore not often used.</li>
+<li><i>complete rerun:</i> Therefore, the initial state is saved and every state in the history list can be reached through "starting with the initial state and redoing all commands from the beginning of the history."</li>
+<li><i>partial checkpoint<b>:</b></i> This is the most used strategy. The changed application state is saved and with undo the part of the state is set back to the forward value.</li>
+<li><i>inverse function:</i> Inverse function needs no saved state information. "For example, moving can be reversed by moving the object back by relative amount." For selective undo there is not enough information for saving the state.</li></ul>
+
+<h2>See also</h2>
+<ul><li>Reversible computing</li>
+<li>Rollback (data management)</li>
+<li>Undeletion</li>
+<li>Version control (native file format)</li></ul>
+
+<h2>References</h2>
+<h2>External links</h2>
+<ul><li>The Age of Undoing - Article about the linguistic history of Undo at The New York Times Magazine.</li>
+<li>Cascading undo control - a paper focused on what is cascading undo and how it might be presented to users</li></ul>
